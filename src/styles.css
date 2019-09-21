@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+html {
+    position: relative;
+    min-height: 100%;    
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+.font-size-gt {
+    font-size: 16px;
+}
+
+.font-size-sm {
+    font-size: 12px;
+}
+
+.container {
+    max-width: 960px;
+}

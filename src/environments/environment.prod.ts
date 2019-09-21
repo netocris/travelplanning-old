@@ -1,3 +1,13 @@
 export const environment = {
-  production: true
+  production: true,
+  contextPath: '/travelplanning',
+  firebase: {
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
+  }
 };
