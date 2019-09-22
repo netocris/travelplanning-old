@@ -14,3 +14,19 @@ Planning your travels
 
     npm install @angular/fire firebase --save
 
+## Configure Bootstrap
+
+    "styles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",        
+        "src/styles.css"
+    ],
+    "scripts": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/popper.js/dist/umd/popper.min.js",
+        "node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ]
+
+## Run in a different port witout or with locale
+
+    ng serve --port=4201
+
