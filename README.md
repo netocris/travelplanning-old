@@ -26,7 +26,7 @@ Planning your travels
         "node_modules/bootstrap/dist/js/bootstrap.min.js"
     ]
 
-## Run in a different port witout or with locale
+## Run in a different port
 
     ng serve --port=4201
 
