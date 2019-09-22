@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseComponent } from '../../base/base.component';
 
 @Component({
@@ -12,13 +12,10 @@ export class DashboardComponent extends BaseComponent {
     super();
    }
 
-  ngOnInit() {
-  }
-
   protected ngOnInitCustom(): void {    
     this.stillLoading = true;
     setTimeout(() => {
-      console.log('do nothing for now ...')
+      this.stillLoading = false;
     }, this.timeout); 
   }
 

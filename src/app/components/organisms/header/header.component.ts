@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/user';
@@ -17,15 +17,11 @@ export class HeaderComponent extends BaseComponent {
 
   constructor(private authService: AuthService, private router: Router,
     @Inject(LOCALE_ID) protected lang: string) {
-      super();
+      super();      
      }
-
-  ngOnInit() {
-  }
-
+  
   protected ngOnInitCustom(): void {
-    this.authService.user.subscribe(user => {
-      console.log('subcribe: ', JSON.stringify(user));
+    this.authService.user.subscribe(user => {      
       this.isLoggedIn = false;
       this.currentUser = null;
       if (user) {

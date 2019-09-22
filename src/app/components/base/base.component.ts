@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 export abstract class BaseComponent implements OnInit {
 
   protected stillLoading: boolean = false;
-  protected timeout: number = 2000;
+  protected timeout: number = 200;
 
   constructor() { }
 

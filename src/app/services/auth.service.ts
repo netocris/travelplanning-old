@@ -19,11 +19,10 @@ export class AuthService extends BaseService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         // Logged in
-        if (user) {
-          console.log('AuthService: ', JSON.stringify(user));
+        if (user) {          
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();          
         } else {
-          // Logged out
+          // Logged out          
           return of(null);
         }
       })
