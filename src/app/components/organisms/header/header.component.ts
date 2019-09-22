@@ -25,6 +25,7 @@ export class HeaderComponent extends BaseComponent {
 
   protected ngOnInitCustom(): void {
     this.authService.user.subscribe(user => {
+      console.log('subcribe: ', JSON.stringify(user));
       this.isLoggedIn = false;
       this.currentUser = null;
       if (user) {
