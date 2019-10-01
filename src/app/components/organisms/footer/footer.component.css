@@ -4,6 +4,10 @@ footer {
     background-color: #f5f5f5;*/
 }
 
+.border-top {
+    border-top: 1px solid var(--color-border) !important;
+}
+
 input[type=checkbox] {
     height: 0;
     width: 0;
