@@ -2,8 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
 html {
     position: relative;
     height: 100%;
@@ -45,6 +43,18 @@ h1, h4, h5 {
 }
 
 .container {
-    max-width: 960px;
+    max-width: 97%;
     background-color: var(--bg-panel);
+}
+  
+#editor > .codex-editor > .codex-editor__redactor {
+    padding-bottom: 2% !important;
+}
+
+#editor > .codex-editor > .codex-editor__redactor > .ce-block > .ce-block__content {
+    margin: 0 0 auto !important;
+}
+
+#editor > .codex-editor > .ce-toolbar > .ce-toolbar__content {
+    margin: 0 5% auto !important;
 }

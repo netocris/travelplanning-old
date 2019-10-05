@@ -2,7 +2,7 @@ import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/user';
-import { BaseComponent } from '../../base/base.component';
+import { BaseComponent } from '../../base.component';
 
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { BaseComponent } from '../../base/base.component';
+import { BaseComponent } from '../../base.component';
 
 @Component({
   selector: 'app-footer',

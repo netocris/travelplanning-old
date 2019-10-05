@@ -27,6 +27,7 @@ import { NotFoundComponent } from './components/atoms/not-found/not-found.compon
 import { DashboardComponent } from './components/organisms/dashboard/dashboard.component';
 import { HeaderComponent } from './components/organisms/header/header.component';
 import { FooterComponent } from './components/organisms/footer/footer.component';
+import { EditorComponent } from './components/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FooterComponent } from './components/organisms/footer/footer.component'
     NotFoundComponent,
     DashboardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { FooterComponent } from './components/organisms/footer/footer.component'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    NgbModule
+    NgbModule    
   ],
   providers: [
     AuthService,
