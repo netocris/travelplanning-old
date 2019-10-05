@@ -44,7 +44,7 @@ h1, h4, h5 {
 
 .container {
     max-width: 97%;
-    background-color: var(--bg-panel);
+    /*background-color: var(--bg-panel);*/
 }
   
 #editor > .codex-editor > .codex-editor__redactor {
@@ -56,5 +56,5 @@ h1, h4, h5 {
 }
 
 #editor > .codex-editor > .ce-toolbar > .ce-toolbar__content {
-    margin: 0 5% auto !important;
+    margin: 0 10% auto !important;
 }

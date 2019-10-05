@@ -8,6 +8,8 @@ import { BaseComponent } from '../../base.component';
 })
 export class DashboardComponent extends BaseComponent {
 
+  records: any = [];
+
   constructor() {
     super();
    }
@@ -17,6 +19,10 @@ export class DashboardComponent extends BaseComponent {
     setTimeout(() => {
       this.stillLoading = false;
     }, this.timeout); 
+  }
+
+  save(): void {
+    
   }
 
 }
