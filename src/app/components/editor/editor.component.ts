@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 
@@ -10,6 +10,9 @@ import Header from '@editorjs/header';
 export class EditorComponent implements OnInit {
 
   editor: EditorJS;
+  
+  @Output()
+  editorOutputEventEmitter = new EventEmitter();
 
   constructor() { }
 
@@ -19,6 +22,15 @@ export class EditorComponent implements OnInit {
       tools: {
         header: Header        
       },      
+    });
+  }
+
+  save(): void {
+    this.editor.save().then((data) => {
+      delete data.version;
+      this.editorOutputEventEmitter.emit(data);
+    }).catch((error) => {
+      console.error('Saving failed: ', error);
     });
   }
 

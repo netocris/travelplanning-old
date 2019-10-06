@@ -4,14 +4,18 @@
   <div class="row">
     <div class="col-sm-12 col-md-6 px-md-2 scrollbar">
       <div class="scroll-enable">
-        <app-editor></app-editor>
-      </div>
-      <button class="btn btn-outline-primary mt-2" (click)="save()">Save</button>
+        <app-editor (editorOutputEventEmitter)="editorOutputEvent($event)"></app-editor>
+      </div>      
     </div>
     <div class="col-sm-12 col-md-6 px-md-2">
-      <div class="border border-light" *ngIf="records.length === 0">
+      <div class="border border-light" *ngIf="!records; else showRecords">
         <span>Nenhum registo encontrado</span>
       </div>
+      <ng-template #showRecords>
+        <div class="border border-light">
+          <pre>{{records | json}}</pre>
+        </div>
+    </ng-template>
     </div>
   </div>
 </ng-template>

@@ -18,6 +18,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 /* services */
 import { AuthService } from './services/auth.service';
+import { FirebaseService } from './services/firebase.service';
 
 /* components */
 import { AppRoutingModule } from './app-routing.module';
@@ -49,6 +50,7 @@ import { EditorComponent } from './components/editor/editor.component';
   ],
   providers: [
     AuthService,
+    FirebaseService,
     {
       provide: APP_BASE_HREF,
       useValue: environment.contextPath

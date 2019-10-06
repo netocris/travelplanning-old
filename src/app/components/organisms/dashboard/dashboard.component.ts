@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseComponent } from '../../base.component';
+import { FirebaseService } from '../../../services/firebase.service';
+import { Record } from '../../../models/record';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +10,26 @@ import { BaseComponent } from '../../base.component';
 })
 export class DashboardComponent extends BaseComponent {
 
-  records: any = [];
+  records: {};
 
-  constructor() {
+  constructor(private fbService: FirebaseService) {
     super();
    }
 
   protected ngOnInitCustom(): void {    
     this.stillLoading = true;
     setTimeout(() => {
-      this.stillLoading = false;
+      this.fbService.getRecords().subscribe((data: Record) => {
+        if (data) {
+          this.records = data;
+          this.stillLoading = false;
+        }
+      });
     }, this.timeout); 
+  }
+
+  editorOutputEvent(data: any): void {
+    this.fbService.save(data);
   }
 
   save(): void {
