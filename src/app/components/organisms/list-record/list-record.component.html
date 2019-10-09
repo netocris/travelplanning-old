@@ -2,12 +2,12 @@
 
 <ng-template #recordsTemplate>
   <div class="row">    
-    <div class="col-sm-12 col-md-6 px-md-2">
-      <div class="border border-light" *ngIf="!records; else showRecords">
+    <div class="col-sm-12 col-md-12 px-md-2 scrollbar">
+      <div class="border border-light" *ngIf="records.length === 0; else showRecords">
         <span>{{ 'norecordsfound' | translate }}</span>
       </div>
       <ng-template #showRecords>
-        <div class="border border-light">
+        <div class="border border-light scroll-enable">
           <pre>{{records | json}}</pre>
         </div>
     </ng-template>
