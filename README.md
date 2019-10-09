@@ -4,15 +4,19 @@ Planning your travels
 
 ## Project dependencies
 
-#### Bootstrap
+#### bootstrap
 
     npm install jquery popper.js bootstrap --save
 
     npm install @ng-bootstrap/ng-bootstrap --save
 
-#### Firebase 6
+#### firebase
 
     npm install @angular/fire firebase --save
+
+### translate
+
+    npm install @ngx-translate/core @ngx-translate/http-loader --save
 
 ## Configure Bootstrap
 
