@@ -1,21 +1,4 @@
-<app-spinner *ngIf="stillLoading; else dashboardTemplate"></app-spinner>
-
-<ng-template #dashboardTemplate>
-  <div class="row">
-    <div class="col-sm-12 col-md-6 px-md-2 scrollbar">
-      <div class="scroll-enable">
-        <app-editor (editorOutputEventEmitter)="editorOutputEvent($event)"></app-editor>
-      </div>      
-    </div>
-    <div class="col-sm-12 col-md-6 px-md-2">
-      <div class="border border-light" *ngIf="!records; else showRecords">
-        <span>Nenhum registo encontrado</span>
-      </div>
-      <ng-template #showRecords>
-        <div class="border border-light">
-          <pre>{{records | json}}</pre>
-        </div>
-    </ng-template>
-    </div>
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Planear roteiros</h1>
+    <p class="lead">Planear o próximo local a visitar ...</p>
   </div>
-</ng-template>

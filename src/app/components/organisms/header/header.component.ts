@@ -11,7 +11,7 @@ import { BaseComponent } from '../../base.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent extends BaseComponent {
-  
+    
   private currentUser: User;
   isLoggedIn: boolean = false;
 
@@ -31,7 +31,7 @@ export class HeaderComponent extends BaseComponent {
       }
     });
   }
-
+  
   login(): void {
     this.authService.signIn();
   }

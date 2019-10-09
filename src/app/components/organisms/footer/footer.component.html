@@ -1,8 +1,8 @@
 <footer class="fixed-bottom">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mt-3 border-top">
         <span class="my-0 mr-md-auto font-size-sm">
-            @{{ year }} <a href="mailto:netocris@gmail.com">netocris@gmail.com</a>
+            @{{ year }} <a href="mailto:netocris@gmail.com">{{ 'footer.contact.email' | translate }}</a>
         </span>        
-        <input type="checkbox" id="switch" name="theme" (change)="onChange($event)" /> <label for="switch">Toggle</label>        
+        <input type="checkbox" id="switch" name="theme" tool (change)="onChange($event)" /> <label for="switch">Toggle</label>        
     </div>    
 </footer>

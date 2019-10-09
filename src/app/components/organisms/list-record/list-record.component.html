@@ -1,0 +1,16 @@
+<app-spinner *ngIf="stillLoading; else recordsTemplate"></app-spinner>
+
+<ng-template #recordsTemplate>
+  <div class="row">    
+    <div class="col-sm-12 col-md-6 px-md-2">
+      <div class="border border-light" *ngIf="!records; else showRecords">
+        <span>{{ 'norecordsfound' | translate }}</span>
+      </div>
+      <ng-template #showRecords>
+        <div class="border border-light">
+          <pre>{{records | json}}</pre>
+        </div>
+    </ng-template>
+    </div>
+  </div>
+</ng-template>

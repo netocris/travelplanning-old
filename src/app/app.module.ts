@@ -26,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient){
 
 /* services */
 import { AuthService } from './services/auth.service';
-import { FirebaseService } from './services/firebase.service';
+import { RecordService } from './services/record.service';
 import { ConfigService } from './services/config.service';
 
 /* components */
@@ -38,6 +38,9 @@ import { DashboardComponent } from './components/organisms/dashboard/dashboard.c
 import { HeaderComponent } from './components/organisms/header/header.component';
 import { FooterComponent } from './components/organisms/footer/footer.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { AddRecordComponent } from './components/organisms/add-record/add-record.component';
+import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
+import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { EditorComponent } from './components/editor/editor.component';
     DashboardComponent,
     HeaderComponent,
     FooterComponent,
-    EditorComponent
+    EditorComponent,
+    AddRecordComponent,
+    ListRecordComponent,
+    EditRecordComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +73,7 @@ import { EditorComponent } from './components/editor/editor.component';
   ],
   providers: [
     AuthService,
-    FirebaseService,
+    RecordService,
     ConfigService,
     {
       provide: APP_BASE_HREF,

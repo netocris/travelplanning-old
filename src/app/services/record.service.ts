@@ -8,7 +8,7 @@ import { Record } from '../models/record';
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseService extends BaseService {
+export class RecordService extends BaseService {
 
   private entityDoc: AngularFirestoreDocument<Record>;
   private entityCol: AngularFirestoreCollection<Record>;
@@ -23,11 +23,11 @@ export class FirebaseService extends BaseService {
     });
   }
 
-  getRecords(): Observable<any> {
+  getRecords(): Observable<Record[]> {
     return this.entityCol.valueChanges();
   }
 
-  save(data: any): void {
+  save(data: Record): void {
     this.entityCol.add(data).then(function() {
       console.log("data saved successfully");
     })

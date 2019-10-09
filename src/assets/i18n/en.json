@@ -1,3 +1,9 @@
 {    
-    "title": "Travel Planning"
+    "title": "Travel Planning",
+    "add": "Add",
+    "list": "List",
+    "signin": "Sign in",
+    "signout": "Sign out",
+    "contact.email": "netocris@gmail.com",
+    "norecordsfound": "No records found"    
 }
