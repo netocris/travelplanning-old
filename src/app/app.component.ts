@@ -10,10 +10,12 @@ import { LocaleEnum } from './types/locale.enum';
 })
 export class AppComponent {
   title = 'travelplanning';
+
   constructor(private translateService: TranslateService, configService: ConfigService){
     /* this language will be used as a fallback when a translation isn't found in the current language */
     translateService.setDefaultLang(configService.getStringKey(LocaleEnum.LOCALE));
     /* this language to use, if the language isn't available, it will use the current loader to get them */
     translateService.use(configService.getStringKey(LocaleEnum.LOCALE));
   }
+  
 }
