@@ -6,7 +6,7 @@ Planning your travels
 
 #### bootstrap
 
-    npm install jquery popper.js bootstrap --save
+    npm install jquery popper.js bootstrap font-awesome --save
 
     npm install @ng-bootstrap/ng-bootstrap --save
 
@@ -21,7 +21,8 @@ Planning your travels
 ## Configure Bootstrap
 
     "styles": [
-        "node_modules/bootstrap/dist/css/bootstrap.min.css",        
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "node_modules/font-awesome/css/font-awesome.min.css",
         "src/styles.css"
     ],
     "scripts": [

@@ -26,9 +26,9 @@ export class HeaderComponent extends BaseComponent {
       this.currentUser = null;
       if (user) {
         this.isLoggedIn = true;
-        this.currentUser = user;
-        this.router.navigate(['/dashboard']);
+        this.currentUser = user;        
       }
+      this.router.navigate(['/dashboard']);
     });
   }
   
@@ -37,7 +37,7 @@ export class HeaderComponent extends BaseComponent {
   }
 
   logout(): void {
-    this.authService.signOut();
+    this.authService.signOut();    
   }
 
   getUserDisplayName(): string {

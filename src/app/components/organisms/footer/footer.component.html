@@ -1,8 +1,11 @@
 <footer class="fixed-bottom">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mt-3 border-top">
         <span class="my-0 mr-md-auto font-size-sm">
-            @{{ year }} <a href="mailto:netocris@gmail.com">{{ 'footer.contact.email' | translate }}</a>
-        </span>        
+            @{{ year }} <a href="mailto:netocris@gmail.com">{{ 'contact.email' | translate }}</a>
+        </span>
+        <ng-container *ngFor="let lang of langList">
+            <a class="p-1 text-dark font-size-sm mx-1" href="#" (click)="useLanguage(lang.code)">{{ lang.label }}</a>
+        </ng-container>        
         <input type="checkbox" id="switch" name="theme" tool (change)="onChange($event)" /> <label for="switch">Toggle</label>        
     </div>    
 </footer>

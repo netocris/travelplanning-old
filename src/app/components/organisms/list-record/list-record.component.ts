@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseComponent } from '../../base.component';
+import { ConfigService } from '../../../services/config.service';
 import { RecordService } from '../../../services/record.service';
 import { Subscription } from 'rxjs';
-import { RecordDto } from '../../../models/record-dto';
-import { IRecordDto } from '../../../models/i-record-dto';
-import { RecordBlockDto } from '../../../models/record-block-dto';
+
 import { IRecord } from '../../../models/i-record';
+import { IRecordDto } from '../../../models/i-record-dto';
+import { RecordDto } from '../../../models/record-dto';
+import { RecordBlockDto } from '../../../models/record-block-dto';
+import { PaginationEnum } from '../../../enum/pagination.enum';
 
 @Component({
   selector: 'app-list-record',
@@ -18,13 +21,19 @@ export class ListRecordComponent extends BaseComponent {
   
   records: IRecordDto[] = [];
 
+  page: number = 1;
+  
+  pageSize: number = 10;
+
   record: IRecordDto = null;
 
-  constructor(private recordService: RecordService) {
+  constructor(private configService: ConfigService, private recordService: RecordService) {
     super();
   }
 
-  protected ngOnInitCustom(): void {    
+  protected ngOnInitCustom(): void {
+    this.page = Number(this.getConfigValue(PaginationEnum.PAGE));
+    this.pageSize = Number(this.getConfigValue(PaginationEnum.PAGE_SIZE));
     this.stillLoading = true;    
     this.recordsSubscription = this.recordService.getRecords().subscribe((data: IRecord[]) => {
       if (data) {
@@ -61,6 +70,14 @@ export class ListRecordComponent extends BaseComponent {
 
   edit(record: IRecordDto){
     this.record = record;
+  }
+
+  pageEventEmitter(value: number): void {
+    this.page = value;
+  }
+
+  private getConfigValue(key: string): string {
+    return this.configService.getStringKey(key);
   }
   
 }

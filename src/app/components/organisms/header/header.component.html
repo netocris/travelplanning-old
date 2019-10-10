@@ -4,10 +4,10 @@
       {{ 'title' | translate }}
     </h5>
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#" routerLink="/add">{{ 'add' | translate }}</a>
-        <a class="p-2 text-dark" href="#" routerLink="/list">{{ 'list' | translate }}</a>      
+      <a class="p-2 text-dark" href="#" routerLink="/add" *ngIf="isLoggedIn">{{ 'add' | translate }}</a>
+      <a class="p-2 text-dark" href="#" routerLink="/list" *ngIf="isLoggedIn">{{ 'list' | translate }}</a>      
     </nav>
-    <span *ngIf="isLoggedIn" class="my-2 my-md-0 mr-md-3 login-info">
+    <span class="my-2 my-md-0 mr-md-3 login-info" *ngIf="isLoggedIn">
       <img src="{{getUserPhoto()}}" title="{{getUserDisplayName()}}" alt="User photo">
     </span>
     <button class="btn btn-outline-primary" href="#" (click)="logout()" *ngIf="isLoggedIn">

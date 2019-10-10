@@ -1,3 +1,5 @@
 export const config = {
-    locale: 'pt'
+    locale: 'pt',
+    page: 1,
+    pageSize: 2
 };

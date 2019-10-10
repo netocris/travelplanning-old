@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { BaseComponent } from '../../base.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
@@ -11,7 +12,11 @@ export class FooterComponent extends BaseComponent {
   
   year: number = 1800;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  langList = [ {'code': 'pt', 'label': 'PT'}, {'code': 'en', 'label': 'EN'}];
+
+  constructor(@Inject(DOCUMENT) private document: Document,
+    @Inject(LOCALE_ID) protected lang: string,
+    private translate: TranslateService) {
     super();
   }
 
@@ -29,6 +34,10 @@ export class FooterComponent extends BaseComponent {
       this.document.documentElement.setAttribute('data-theme', 'light');
     }
   }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+}
 
   private trans(): void {
     this.document.documentElement.classList.add('transition');

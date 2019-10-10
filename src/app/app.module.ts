@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { APP_BASE_HREF, registerLocaleData } from '@angular/common';
@@ -42,6 +43,8 @@ import { AddRecordComponent } from './components/organisms/add-record/add-record
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
 import { DrawRecordComponent } from './components/organisms/draw-record/draw-record.component';
+import { PaginationComponent } from './components/organisms/pagination/pagination.component';
+import { FilterComponent } from './components/organisms/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -55,10 +58,13 @@ import { DrawRecordComponent } from './components/organisms/draw-record/draw-rec
     AddRecordComponent,
     ListRecordComponent,
     EditRecordComponent,
-    DrawRecordComponent
+    DrawRecordComponent,
+    PaginationComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
