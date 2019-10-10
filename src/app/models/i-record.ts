@@ -1,4 +1,4 @@
-export interface Record {
+export interface IRecord {
     time: number;
     blocks: Array<any>;
 }

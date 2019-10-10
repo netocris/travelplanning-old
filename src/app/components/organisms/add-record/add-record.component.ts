@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseComponent } from '../../base.component';
 import { RecordService } from '../../../services/record.service';
-import { Record } from '../../../models/record';
+import { IRecord } from '../../../models/i-record';
 
 @Component({
   selector: 'app-add-record',
@@ -14,7 +14,7 @@ export class AddRecordComponent extends BaseComponent {
     super();
   }
 
-  save(data: Record): void {
+  save(data: IRecord): void {
     this.recordService.save(data);
   }
   

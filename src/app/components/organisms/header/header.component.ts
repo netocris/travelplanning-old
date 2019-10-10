@@ -1,7 +1,7 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/user';
+import { IUser } from '../../../models/i-user';
 import { BaseComponent } from '../../base.component';
 
 
@@ -12,7 +12,7 @@ import { BaseComponent } from '../../base.component';
 })
 export class HeaderComponent extends BaseComponent {
     
-  private currentUser: User;
+  private currentUser: IUser;
   isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService, private router: Router,

@@ -41,6 +41,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { AddRecordComponent } from './components/organisms/add-record/add-record.component';
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
+import { DrawRecordComponent } from './components/organisms/draw-record/draw-record.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { EditRecordComponent } from './components/organisms/edit-record/edit-rec
     EditorComponent,
     AddRecordComponent,
     ListRecordComponent,
-    EditRecordComponent
+    EditRecordComponent,
+    DrawRecordComponent
   ],
   imports: [
     BrowserModule,

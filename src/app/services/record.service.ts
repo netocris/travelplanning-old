@@ -3,31 +3,31 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BaseService } from './base.service';
-import { Record } from '../models/record';
+import { IRecord } from '../models/i-record';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecordService extends BaseService {
 
-  private entityDoc: AngularFirestoreDocument<Record>;
-  private entityCol: AngularFirestoreCollection<Record>;
+  private entityDoc: AngularFirestoreDocument<IRecord>;
+  private entityCol: AngularFirestoreCollection<IRecord>;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
     super();
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.entityDoc = this.afs.collection('records').doc(user.uid);
-        this.entityCol = this.entityDoc.collection<Record>('items');
+        this.entityCol = this.entityDoc.collection<IRecord>('items');
       }
     });
   }
 
-  getRecords(): Observable<Record[]> {
+  getRecords(): Observable<IRecord[]> {
     return this.entityCol.valueChanges();
   }
 
-  save(data: Record): void {
+  save(data: IRecord): void {
     this.entityCol.add(data).then(function() {
       console.log("data saved successfully");
     })

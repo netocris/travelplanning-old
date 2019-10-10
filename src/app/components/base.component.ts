@@ -28,4 +28,11 @@ export abstract class BaseComponent implements OnInit {
     return false;
   }
 
+  protected isEmptyArray(value: any[]) {
+    if (value === undefined || value === null || value.length <= 0) {
+        return true;
+    }
+    return false;
+  }
+
 }
