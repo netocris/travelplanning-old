@@ -4,8 +4,8 @@
             @{{ year }} <a href="mailto:netocris@gmail.com">{{ 'contact.email' | translate }}</a>
         </span>
         <ng-container *ngFor="let lang of langList">
-            <a class="p-1 text-dark font-size-sm mx-1" href="#" (click)="useLanguage(lang.code)">{{ lang.label }}</a>
+            <a class="p-1 text-dark font-size-sm mx-1 cursor-pointer" (click)="useLanguage(lang.code)">{{ lang.label }}</a>
         </ng-container>        
-        <input type="checkbox" id="switch" name="theme" tool (change)="onChange($event)" /> <label for="switch">Toggle</label>        
+        <input type="checkbox" id="switch" name="theme" (change)="onChange($event)" /> <label for="switch">Toggle</label>        
     </div>    
 </footer>

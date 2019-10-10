@@ -35,7 +35,7 @@ export class FooterComponent extends BaseComponent {
     }
   }
 
-  useLanguage(language: string) {
+  useLanguage(language: string): void {
     this.translate.use(language);
 }
 
