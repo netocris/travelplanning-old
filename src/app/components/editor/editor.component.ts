@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 
@@ -10,6 +10,19 @@ import Header from '@editorjs/header';
 export class EditorComponent implements OnInit {
 
   editor: EditorJS;
+
+  @Input()
+  previousData = {
+    time: 0,
+    blocks: [
+      {
+        type: "paragraph",
+        data: {
+          text: "teste"
+        }
+      }
+    ]
+  };
   
   @Output()
   editorOutputEventEmitter = new EventEmitter();
@@ -21,7 +34,8 @@ export class EditorComponent implements OnInit {
       holder: 'editor',
       tools: {
         header: Header        
-      },      
+      },
+      data: this.previousData
     });
   }
 
