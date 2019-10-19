@@ -38,13 +38,6 @@ export class EditRecordComponent extends BaseComponent {
       this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
         if (data) {
           this.record = this.processData(data);
-          this.editor = new EditorJS({
-            holder: 'editor',
-            tools: {
-              header: Header
-            },
-            data: this.record
-          });
           this.stillLoading = false;
         }
       });
@@ -61,6 +54,21 @@ export class EditRecordComponent extends BaseComponent {
   protected ngOnDestroyCustom(): void {
     if (!this.isEmptyObject(this.recordSubscription)) {
       this.recordSubscription.unsubscribe();
+    }
+  }
+
+  ngAfterViewInit() {
+    if(this.isEmptyObject(this.editor)){
+      setTimeout(() => {
+        debugger;
+        this.editor = new EditorJS({
+          holder: 'editor',
+          tools: {
+            header: Header
+          },
+          data: this.record
+        });
+      }, this.timeout);
     }
   }
 
@@ -99,16 +107,12 @@ export class EditRecordComponent extends BaseComponent {
 
   save(): void {
     this.editor.save().then((data) => {
+      debugger;
       delete data.version;
       this.recordService.save(data);
-      //this.editorOutputEventEmitter.emit(data);
     }).catch((error) => {
       console.error('Saving failed: ', error);
     });
   }
-
-  // save(data: IRecord): void {
-  //   this.recordService.save(data);
-  // }
 
 }

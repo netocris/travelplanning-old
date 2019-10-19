@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent extends BaseComponent {
-  
+
   year: number = 1800;
 
   langList = [ {'code': 'pt', 'label': 'PT'}, {'code': 'en', 'label': 'EN'}];
@@ -43,7 +43,7 @@ export class FooterComponent extends BaseComponent {
     this.document.documentElement.classList.add('transition');
       window.setTimeout(() => {
         this.document.documentElement.classList.remove('transition');
-      }, 1000);
+      }, this.timeout);
   }
 
 }

@@ -39,7 +39,7 @@ export class RecordService extends BaseService {
     return this.entityCol.doc<IRecord>(id).snapshotChanges();
   }
 
-  save(data: IRecord): void {
+  save(data: any): void {
     this.entityCol.add(data).then(function() {
       console.log("data saved successfully");
     })
