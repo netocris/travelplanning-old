@@ -2,10 +2,16 @@
 
 <ng-template #editRecordTemplate>
     <div class="row">
-        <div class="col-sm-12 col-md-6 px-md-2 scrollbar">
+        <div class="col-sm-12 col-md-6 mb-3 scrollbar">
             <div class="scroll-enable">
-                <app-editor [previousData]="record" (editorOutputEventEmitter)="save($event)"></app-editor>
+                <!--<app-editor [previousData]="record" (editorOutputEventEmitter)="save($event)"></app-editor>-->
+                <div id="editor"></div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <button class="btn btn-outline-primary" (click)="save()">Save</button>
         </div>
     </div>
 </ng-template>

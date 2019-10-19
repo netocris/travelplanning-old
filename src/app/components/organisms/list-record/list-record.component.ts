@@ -36,12 +36,14 @@ export class ListRecordComponent extends BaseComponent {
     this.page = Number(this.getConfigValue(PaginationEnum.PAGE));
     this.pageSize = Number(this.getConfigValue(PaginationEnum.PAGE_SIZE));
     this.stillLoading = true;
-    this.recordsSubscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
-      if (data) {
-        this.processData(data);
-        this.stillLoading = false;
-      }
-    });
+    //setTimeout(() => {
+      this.recordsSubscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
+        if (data) {
+          this.processData(data);
+          this.stillLoading = false;
+        }
+      });
+    //}, this.timeout);
   }
 
   protected ngOnDestroyCustom(): void {

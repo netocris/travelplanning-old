@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header';
+
 import { BaseComponent } from '../../base.component';
 import { RecordService } from './../../../services/record.service';
 import { IRecord } from './../../../models/i-record';
@@ -22,18 +25,34 @@ export class EditRecordComponent extends BaseComponent {
 
   record: IRecord = null;
 
+  editor: EditorJS;
+
   constructor(private route: ActivatedRoute, private recordService: RecordService) {
     super();
   }
 
   protected ngOnInitCustom(): void {
-    this.record = new Record();
     const id = this.route.snapshot.queryParams['id'];
     if(!this.isEmptyValue(id)){
+      this.stillLoading = true;
       this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
         if (data) {
           this.record = this.processData(data);
+          this.editor = new EditorJS({
+            holder: 'editor',
+            tools: {
+              header: Header
+            },
+            data: this.record
+          });
           this.stillLoading = false;
+        }
+      });
+    } else {
+      this.editor = new EditorJS({
+        holder: 'editor',
+        tools: {
+          header: Header
         }
       });
     }
@@ -74,12 +93,22 @@ export class EditRecordComponent extends BaseComponent {
       }
     }
 
-    return this.record;
+    return record;
 
   };
 
-  save(data: IRecord): void {
-    this.recordService.save(data);
+  save(): void {
+    this.editor.save().then((data) => {
+      delete data.version;
+      this.recordService.save(data);
+      //this.editorOutputEventEmitter.emit(data);
+    }).catch((error) => {
+      console.error('Saving failed: ', error);
+    });
   }
+
+  // save(data: IRecord): void {
+  //   this.recordService.save(data);
+  // }
 
 }

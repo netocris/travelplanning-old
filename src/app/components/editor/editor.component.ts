@@ -15,14 +15,7 @@ export class EditorComponent extends BaseComponent {
   editor: EditorJS;
 
   @Input()
-  previousData: IRecord = new Record();
-
-  // @Input()
-  // previousData = {
-  //   id: '',
-  //   time: 0,
-  //   blocks: []
-  // };
+  previousData: IRecord = null;
 
   @Output()
   editorOutputEventEmitter = new EventEmitter();
@@ -32,16 +25,13 @@ export class EditorComponent extends BaseComponent {
   }
 
   protected ngOnInitCustom(): void {
-    this.previousData = new Record();
-    setTimeout(() => {
-      this.editor = new EditorJS({
-        holder: 'editor',
-        tools: {
-          header: Header
-        },
-        data: this.previousData
-      });
-    }, this.timeout);
+    this.editor = new EditorJS({
+      holder: 'editor',
+      tools: {
+        header: Header
+      },
+      data: this.previousData
+    });
   }
 
   save(): void {
