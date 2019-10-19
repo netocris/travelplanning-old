@@ -23,9 +23,9 @@ export class EditRecordComponent extends BaseComponent {
 
   private recordSubscription: Subscription = null;
 
-  record: IRecord = null;
-
   editor: EditorJS;
+
+  record: IRecord = null;
 
   constructor(private route: ActivatedRoute, private recordService: RecordService) {
     super();
