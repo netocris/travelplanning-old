@@ -39,7 +39,6 @@ import { DashboardComponent } from './components/organisms/dashboard/dashboard.c
 import { HeaderComponent } from './components/organisms/header/header.component';
 import { FooterComponent } from './components/organisms/footer/footer.component';
 import { EditorComponent } from './components/editor/editor.component';
-import { AddRecordComponent } from './components/organisms/add-record/add-record.component';
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
 import { DrawRecordComponent } from './components/organisms/draw-record/draw-record.component';
@@ -55,7 +54,6 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     HeaderComponent,
     FooterComponent,
     EditorComponent,
-    AddRecordComponent,
     ListRecordComponent,
     EditRecordComponent,
     DrawRecordComponent,

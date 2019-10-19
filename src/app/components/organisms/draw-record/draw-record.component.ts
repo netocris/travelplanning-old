@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecordDto } from '../../../models/record-dto';
+import { Record } from '../../../models/record';
 
 @Component({
   selector: 'app-draw-record',
@@ -9,7 +9,7 @@ import { RecordDto } from '../../../models/record-dto';
 export class DrawRecordComponent implements OnInit {
 
   @Input()
-  record: RecordDto = null;
+  record: Record = null;
 
   constructor() { }
 

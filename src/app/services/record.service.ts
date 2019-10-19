@@ -23,8 +23,16 @@ export class RecordService extends BaseService {
     });
   }
 
+  getRecordsSnap() {
+    return this.entityCol.snapshotChanges();
+  }
+
   getRecords(): Observable<IRecord[]> {
     return this.entityCol.valueChanges();
+  }
+
+  getRecordById(id: number): Observable<IRecord> {
+    return this.entityCol.doc<IRecord>(''+id).valueChanges();
   }
 
   save(data: IRecord): void {

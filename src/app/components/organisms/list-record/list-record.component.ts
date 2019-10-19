@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { BaseComponent } from '../../base.component';
 import { ConfigService } from '../../../services/config.service';
 import { RecordService } from '../../../services/record.service';
-import { Subscription } from 'rxjs';
-
 import { IRecord } from '../../../models/i-record';
-import { IRecordDto } from '../../../models/i-record-dto';
-import { RecordDto } from '../../../models/record-dto';
-import { RecordBlockDto } from '../../../models/record-block-dto';
+import { Record } from '../../../models/record';
+import { IBlock } from '../../../models/i-block';
+import { Block } from '../../../models/block';
+import { IBlockContent } from '../../../models/i-block-content';
+import { BlockContent } from '../../../models/block-content';
 import { PaginationEnum } from '../../../enum/pagination.enum';
+
 
 @Component({
   selector: 'app-list-record',
@@ -18,30 +22,27 @@ import { PaginationEnum } from '../../../enum/pagination.enum';
 export class ListRecordComponent extends BaseComponent {
 
   private recordsSubscription: Subscription = null;
-  
-  records: IRecordDto[] = [];
+
+  records: IRecord[] = [];
 
   page: number = 1;
-  
+
   pageSize: number = 10;
 
-  record: IRecordDto = null;
-
-  constructor(private configService: ConfigService, private recordService: RecordService) {
+  constructor(private router: Router, private configService: ConfigService, private recordService: RecordService) {
     super();
   }
 
   protected ngOnInitCustom(): void {
     this.page = Number(this.getConfigValue(PaginationEnum.PAGE));
     this.pageSize = Number(this.getConfigValue(PaginationEnum.PAGE_SIZE));
-    this.stillLoading = true;    
-    this.recordsSubscription = this.recordService.getRecords().subscribe((data: IRecord[]) => {
+    this.stillLoading = true;
+    this.recordsSubscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
       if (data) {
-        //this.records = data;
-        this.processData(data);
+        this.processDataSnap(data);
         this.stillLoading = false;
       }
-    });    
+    });
   }
 
   protected ngOnDestroyCustom(): void {
@@ -50,26 +51,68 @@ export class ListRecordComponent extends BaseComponent {
     }
   }
 
-  private processData(data: IRecord[]): void {    
-    if(!this.isEmptyArray(data)){
-      data.filter(item => {
-        let dto = new RecordDto();
-        dto.time = item.time;
-        dto.blocks = [];        
-        item.blocks.filter((item1 => {
-          let blockDto = new RecordBlockDto();          
-          blockDto.type = item1.type;
-          blockDto.value = item1.data.text;
-          dto.blocks.push(blockDto);
-        }));        
-        
-        this.records.push(dto);
-      });
-    }
-  }
+  private processDataSnap(data: any): void {
 
-  edit(record: IRecordDto){
-    this.record = record;
+    if(!this.isEmptyArray(data)){
+
+      data.filter(dataItem => {
+
+        const doc = dataItem.payload.doc;
+        if(!this.isEmptyObject(doc)){
+
+          const record: IRecord = new Record();
+
+          // store record id
+          record.id = doc.id;
+
+          // process data object
+          const docData = doc.data();
+          if(!this.isEmptyObject(docData)){
+            record.time = docData.time;
+            record.blocks = [];
+            docData.blocks.filter(blockItem => {
+              const block: IBlock = new Block();
+              block.type = blockItem.type;
+              const blockContent: IBlockContent = new BlockContent();
+              blockContent.text = blockItem.data.text;
+              block.data = blockContent;
+              record.blocks.push(block);
+            });
+          }
+
+          this.records.push(record);
+
+        }
+
+      });
+
+    }
+
+  };
+
+  // private processData(data: IRecord[]): void {
+  //   if(!this.isEmptyArray(data)){
+  //     data.filter(item => {
+  //       let dto: IRecord = new Record();
+  //       dto.time = item.time;
+  //       dto.blocks = [];
+  //       item.blocks.filter((item1 => {
+  //         let blockDto: IBlock = new Block();
+  //         blockDto.type = item1.type;
+  //         let dataDto: IData = new Data();
+  //         dataDto.text = item1.data.text;
+  //         dto.blocks.push(blockDto);
+  //       }));
+
+  //       this.records.push(dto);
+  //     });
+  //   }
+  // };
+
+  edit(record: Record){
+    this.router.navigate(['/edit'], {
+      queryParams: { id: record.id }
+    });
   }
 
   pageEventEmitter(value: number): void {
@@ -79,5 +122,5 @@ export class ListRecordComponent extends BaseComponent {
   private getConfigValue(key: string): string {
     return this.configService.getStringKey(key);
   }
-  
+
 }

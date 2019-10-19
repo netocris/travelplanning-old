@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { IRecordDto } from '../../../models/i-record-dto';
+import { IRecord } from '../../../models/i-record';
 
 @Component({
   selector: 'app-filter',
@@ -11,7 +11,7 @@ export class FilterComponent implements OnInit {
   value: string;
 
   @Input()
-  records: IRecordDto[];
+  records: IRecord[];
 
   @Output()
   searchOutputEventEmitter = new EventEmitter();

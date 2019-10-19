@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IRecordDto } from '../../../models/i-record-dto';
+import { IRecord } from '../../../models/i-record';
 
 @Component({
   selector: 'app-pagination',
@@ -9,7 +9,7 @@ import { IRecordDto } from '../../../models/i-record-dto';
 export class PaginationComponent implements OnInit {
 
   @Input()
-  records: IRecordDto[];
+  records: IRecord[];
 
   @Input()
   page: number;

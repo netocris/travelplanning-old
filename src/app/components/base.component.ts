@@ -35,4 +35,11 @@ export abstract class BaseComponent implements OnInit {
     return false;
   }
 
+  protected isEmptyValue(value: string) {
+    if (value === undefined || value === null || value.split(' ').join('') === '') {
+        return true;
+    }
+    return false;
+  }
+
 }
