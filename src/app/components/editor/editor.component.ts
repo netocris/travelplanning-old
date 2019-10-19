@@ -1,7 +1,9 @@
+import { IRecord } from './../../models/i-record';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import { BaseComponent } from '../base.component';
+import { Record } from '../../models/record';
 
 @Component({
   selector: 'app-editor',
@@ -13,11 +15,14 @@ export class EditorComponent extends BaseComponent {
   editor: EditorJS;
 
   @Input()
-  previousData = {
-    id: '',
-    time: 0,
-    blocks: []
-  };
+  previousData: IRecord = new Record();
+
+  // @Input()
+  // previousData = {
+  //   id: '',
+  //   time: 0,
+  //   blocks: []
+  // };
 
   @Output()
   editorOutputEventEmitter = new EventEmitter();
@@ -27,8 +32,8 @@ export class EditorComponent extends BaseComponent {
   }
 
   protected ngOnInitCustom(): void {
+    this.previousData = new Record();
     setTimeout(() => {
-      debugger;
       this.editor = new EditorJS({
         holder: 'editor',
         tools: {

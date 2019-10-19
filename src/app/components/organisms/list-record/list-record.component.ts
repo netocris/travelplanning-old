@@ -45,7 +45,7 @@ export class ListRecordComponent extends BaseComponent {
   }
 
   protected ngOnDestroyCustom(): void {
-    if (this.isEmptyObject(this.recordsSubscription)) {
+    if (!this.isEmptyObject(this.recordsSubscription)) {
       this.recordsSubscription.unsubscribe();
     }
   }

@@ -27,12 +27,12 @@ export class EditRecordComponent extends BaseComponent {
   }
 
   protected ngOnInitCustom(): void {
+    this.record = new Record();
     const id = this.route.snapshot.queryParams['id'];
     if(!this.isEmptyValue(id)){
-      this.recordService.getRecordById(id).subscribe;
       this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
         if (data) {
-          this.processData(data);
+          this.record = this.processData(data);
           this.stillLoading = false;
         }
       });
@@ -40,18 +40,18 @@ export class EditRecordComponent extends BaseComponent {
   }
 
   protected ngOnDestroyCustom(): void {
-    if (this.isEmptyObject(this.recordSubscription)) {
+    if (!this.isEmptyObject(this.recordSubscription)) {
       this.recordSubscription.unsubscribe();
     }
   }
 
-  private processData(data: any): void {
+  private processData(data: any): IRecord {
+
+    const record: IRecord = new Record();
 
     if(!this.isEmptyObject(data)){
       const doc = data.payload;
       if(!this.isEmptyObject(doc)){
-
-        const record: IRecord = new Record();
 
         // store record id
         record.id = doc.id;
@@ -71,10 +71,10 @@ export class EditRecordComponent extends BaseComponent {
           });
         }
 
-        this.record = record;
-
       }
     }
+
+    return this.record;
 
   };
 
