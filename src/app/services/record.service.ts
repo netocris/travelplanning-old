@@ -13,7 +13,7 @@ export class RecordService extends BaseService {
   private entityDoc: AngularFirestoreDocument<IRecord>;
   private entityCol: AngularFirestoreCollection<IRecord>;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
     super();
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -31,8 +31,12 @@ export class RecordService extends BaseService {
     return this.entityCol.valueChanges();
   }
 
-  getRecordById(id: number): Observable<IRecord> {
-    return this.entityCol.doc<IRecord>(''+id).valueChanges();
+  getRecordById(id: string): Observable<IRecord> {
+    return this.entityCol.doc<IRecord>(id).valueChanges();
+  }
+
+  getRecordByIdSnap(id: string) {
+    return this.entityCol.doc<IRecord>(id).snapshotChanges();
   }
 
   save(data: IRecord): void {
@@ -43,5 +47,5 @@ export class RecordService extends BaseService {
       console.error("Error adding document: ", error);
     });
   }
-  
+
 }

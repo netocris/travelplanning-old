@@ -13,7 +13,6 @@ import { IBlockContent } from '../../../models/i-block-content';
 import { BlockContent } from '../../../models/block-content';
 import { PaginationEnum } from '../../../enum/pagination.enum';
 
-
 @Component({
   selector: 'app-list-record',
   templateUrl: './list-record.component.html',
@@ -39,7 +38,7 @@ export class ListRecordComponent extends BaseComponent {
     this.stillLoading = true;
     this.recordsSubscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
       if (data) {
-        this.processDataSnap(data);
+        this.processData(data);
         this.stillLoading = false;
       }
     });
@@ -51,7 +50,7 @@ export class ListRecordComponent extends BaseComponent {
     }
   }
 
-  private processDataSnap(data: any): void {
+  private processData(data: any): void {
 
     if(!this.isEmptyArray(data)){
 

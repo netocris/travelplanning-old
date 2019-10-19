@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { BaseComponent } from '../../base.component';
 import { RecordService } from './../../../services/record.service';
 import { IRecord } from './../../../models/i-record';
-import { ActivatedRoute } from '@angular/router';
+import { Record } from '../../../models/record';
+import { IBlock } from '../../../models/i-block';
+import { Block } from '../../../models/block';
+import { IBlockContent } from '../../../models/i-block-content';
+import { BlockContent } from '../../../models/block-content';
 
 @Component({
   selector: 'app-edit-record',
@@ -10,7 +17,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-record.component.css']
 })
 export class EditRecordComponent extends BaseComponent {
-  
+
+  private recordSubscription: Subscription = null;
+
+  record: IRecord = null;
+
   constructor(private route: ActivatedRoute, private recordService: RecordService) {
     super();
   }
@@ -18,12 +29,57 @@ export class EditRecordComponent extends BaseComponent {
   protected ngOnInitCustom(): void {
     const id = this.route.snapshot.queryParams['id'];
     if(!this.isEmptyValue(id)){
-      this.recordService.getRecordById(id);
+      this.recordService.getRecordById(id).subscribe;
+      this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
+        if (data) {
+          this.processData(data);
+          this.stillLoading = false;
+        }
+      });
     }
   }
 
+  protected ngOnDestroyCustom(): void {
+    if (this.isEmptyObject(this.recordSubscription)) {
+      this.recordSubscription.unsubscribe();
+    }
+  }
+
+  private processData(data: any): void {
+
+    if(!this.isEmptyObject(data)){
+      const doc = data.payload;
+      if(!this.isEmptyObject(doc)){
+
+        const record: IRecord = new Record();
+
+        // store record id
+        record.id = doc.id;
+
+        // process data object
+        const docData = doc.data();
+        if(!this.isEmptyObject(docData)){
+          record.time = docData.time;
+          record.blocks = [];
+          docData.blocks.filter(blockItem => {
+            const block: IBlock = new Block();
+            block.type = blockItem.type;
+            const blockContent: IBlockContent = new BlockContent();
+            blockContent.text = blockItem.data.text;
+            block.data = blockContent;
+            record.blocks.push(block);
+          });
+        }
+
+        this.record = record;
+
+      }
+    }
+
+  };
+
   save(data: IRecord): void {
     this.recordService.save(data);
-  }  
+  }
 
 }

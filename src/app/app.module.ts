@@ -41,7 +41,6 @@ import { FooterComponent } from './components/organisms/footer/footer.component'
 import { EditorComponent } from './components/editor/editor.component';
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
-import { DrawRecordComponent } from './components/organisms/draw-record/draw-record.component';
 import { PaginationComponent } from './components/organisms/pagination/pagination.component';
 import { FilterComponent } from './components/organisms/filter/filter.component';
 
@@ -56,7 +55,6 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     EditorComponent,
     ListRecordComponent,
     EditRecordComponent,
-    DrawRecordComponent,
     PaginationComponent,
     FilterComponent
   ],
