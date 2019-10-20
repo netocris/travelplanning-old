@@ -1,4 +1,4 @@
-{    
+{
     "title": "Travel Planning",
     "add": "Add",
     "list": "List",
@@ -7,5 +7,8 @@
     "contact.email": "netocris@gmail.com",
     "norecordsfound": "No records found",
     "dashboard.title": "dreaming about your dream trip",
-    "dashboard.message": "always dreaming about your dream trip, why not plan it ..."
+    "dashboard.message": "always dreaming about your dream trip, why not plan it ...",
+    "list.record.table.header.date": "Date",
+    "list.record.table.header.type": "Type",
+    "list.record.table.header.text": "Text"
 }

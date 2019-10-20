@@ -37,10 +37,11 @@ export class ListRecordComponent extends BaseComponent {
     this.pageSize = Number(this.getConfigValue(PaginationEnum.PAGE_SIZE));
     this.stillLoading = true;
     this.recordsSubscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
+      this.records = [];
       if (data) {
         this.processData(data);
-        this.stillLoading = false;
       }
+      this.stillLoading = false;
     });
   }
 
@@ -50,6 +51,40 @@ export class ListRecordComponent extends BaseComponent {
     }
   }
 
+  /**
+   * edit record
+   *
+   * @param id record id
+   */
+  edit(id: string){
+    this.router.navigate(['/edit'], {
+      queryParams: { id: id }
+    });
+  }
+
+  /**
+   * delete record
+   *
+   * @param id record id
+   */
+  delete(id: string){
+    this.recordService.delete(id);
+  }
+
+  /**
+   * page event emitter
+   *
+   * @param value page number
+   */
+  pageEventEmitter(value: number): void {
+    this.page = value;
+  }
+
+  /**
+   * process data from service
+   *
+   * @param data data
+   */
   private processData(data: any): void {
 
     if(!this.isEmptyArray(data)){
@@ -87,37 +122,12 @@ export class ListRecordComponent extends BaseComponent {
 
     }
 
-  };
-
-  // private processData(data: IRecord[]): void {
-  //   if(!this.isEmptyArray(data)){
-  //     data.filter(item => {
-  //       let dto: IRecord = new Record();
-  //       dto.time = item.time;
-  //       dto.blocks = [];
-  //       item.blocks.filter((item1 => {
-  //         let blockDto: IBlock = new Block();
-  //         blockDto.type = item1.type;
-  //         let dataDto: IData = new Data();
-  //         dataDto.text = item1.data.text;
-  //         dto.blocks.push(blockDto);
-  //       }));
-
-  //       this.records.push(dto);
-  //     });
-  //   }
-  // };
-
-  edit(record: Record){
-    this.router.navigate(['/edit'], {
-      queryParams: { id: record.id }
-    });
   }
 
-  pageEventEmitter(value: number): void {
-    this.page = value;
-  }
-
+  /**
+   *
+   * @param key
+   */
   private getConfigValue(key: string): string {
     return this.configService.getStringKey(key);
   }

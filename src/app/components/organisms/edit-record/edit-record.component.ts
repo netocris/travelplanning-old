@@ -23,6 +23,8 @@ export class EditRecordComponent extends BaseComponent {
 
   private recordSubscription: Subscription = null;
 
+  private id: string = '-1';
+
   editor: EditorJS;
 
   record: IRecord = null;
@@ -38,6 +40,9 @@ export class EditRecordComponent extends BaseComponent {
       this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
         if (data) {
           this.record = this.processData(data);
+          if(!this.isEmptyValue(this.record.id)){
+            this.id = this.record.id;
+          }
           this.stillLoading = false;
         }
       });
@@ -60,7 +65,6 @@ export class EditRecordComponent extends BaseComponent {
   ngAfterViewInit() {
     if(this.isEmptyObject(this.editor)){
       setTimeout(() => {
-        debugger;
         this.editor = new EditorJS({
           holder: 'editor',
           tools: {
@@ -72,6 +76,27 @@ export class EditRecordComponent extends BaseComponent {
     }
   }
 
+  /**
+   * save data
+   */
+  save(): void {
+    this.editor.save().then((data) => {
+      delete data.version;
+      if(this.id === '-1') {
+        this.recordService.save(data);
+      } else {
+        this.recordService.edit(this.id, data);
+      }
+    }).catch((error) => {
+      console.error('Saving failed: ', error);
+    });
+  }
+
+  /**
+   * process data from service
+   *
+   * @param data data
+   */
   private processData(data: any): IRecord {
 
     const record: IRecord = new Record();
@@ -103,16 +128,6 @@ export class EditRecordComponent extends BaseComponent {
 
     return record;
 
-  };
-
-  save(): void {
-    this.editor.save().then((data) => {
-      debugger;
-      delete data.version;
-      this.recordService.save(data);
-    }).catch((error) => {
-      console.error('Saving failed: ', error);
-    });
   }
 
 }
