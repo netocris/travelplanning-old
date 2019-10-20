@@ -23,3 +23,10 @@
   border-radius: 10px;
   background-color: #c8c8c8;
 }
+
+.spinner-border-sm {
+  border-top-width: .0625em;
+  border-right-width: .0625em;
+  border-bottom-width: .0625em;
+  border-left-width: .0625em;
+}
