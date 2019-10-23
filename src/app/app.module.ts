@@ -42,6 +42,8 @@ import { ListRecordComponent } from './components/organisms/list-record/list-rec
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
 import { PaginationComponent } from './components/organisms/pagination/pagination.component';
 import { FilterComponent } from './components/organisms/filter/filter.component';
+import { DismissButtonComponent } from './components/atoms/dismiss-button/dismiss-button.component';
+import { AlertDismissComponent } from './components/molecules/alert-dismiss/alert-dismiss.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     ListRecordComponent,
     EditRecordComponent,
     PaginationComponent,
-    FilterComponent
+    FilterComponent,
+    DismissButtonComponent,
+    AlertDismissComponent
   ],
   imports: [
     BrowserModule,
