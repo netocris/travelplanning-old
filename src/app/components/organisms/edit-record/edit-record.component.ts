@@ -38,8 +38,8 @@ export class EditRecordComponent extends BaseComponent {
   protected ngOnInitCustom(): void {
     const id = this.route.snapshot.queryParams['id'];
     if(!this.isEmptyValue(id)){
-      this.stillLoading = true;
       if (this.isEmptyObject(this.subscription)) {
+        this.stillLoading = true;
         this.subscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
           if (data) {
             this.record = this.processData(data);

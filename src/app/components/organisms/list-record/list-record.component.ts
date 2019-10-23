@@ -35,8 +35,8 @@ export class ListRecordComponent extends BaseComponent {
   protected ngOnInitCustom(): void {
     this.page = Number(this.getConfigValue(PaginationEnum.PAGE));
     this.pageSize = Number(this.getConfigValue(PaginationEnum.PAGE_SIZE));
-    this.stillLoading = true;
     if (this.isEmptyObject(this.subscription)) {
+      this.stillLoading = true;
       this.subscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
         this.records = [];
         if (data) {
