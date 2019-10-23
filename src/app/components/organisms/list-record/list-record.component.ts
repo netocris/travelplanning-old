@@ -20,7 +20,7 @@ import { PaginationEnum } from '../../../enum/pagination.enum';
 })
 export class ListRecordComponent extends BaseComponent {
 
-  private recordsSubscription: Subscription = null;
+  private subscription: Subscription = null;
 
   records: IRecord[] = [];
 
@@ -36,18 +36,20 @@ export class ListRecordComponent extends BaseComponent {
     this.page = Number(this.getConfigValue(PaginationEnum.PAGE));
     this.pageSize = Number(this.getConfigValue(PaginationEnum.PAGE_SIZE));
     this.stillLoading = true;
-    this.recordsSubscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
-      this.records = [];
-      if (data) {
-        this.processData(data);
-      }
-      this.stillLoading = false;
-    });
+    if (this.isEmptyObject(this.subscription)) {
+      this.subscription = this.recordService.getRecordsSnap().subscribe((data: any) => {
+        this.records = [];
+        if (data) {
+          this.processData(data);
+        }
+        this.stillLoading = false;
+      });
+    }
   }
 
   protected ngOnDestroyCustom(): void {
-    if (!this.isEmptyObject(this.recordsSubscription)) {
-      this.recordsSubscription.unsubscribe();
+    if (!this.isEmptyObject(this.subscription)) {
+      this.subscription.unsubscribe();
     }
   }
 

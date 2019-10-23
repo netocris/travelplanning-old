@@ -21,7 +21,7 @@ import { BlockContent } from '../../../models/block-content';
 })
 export class EditRecordComponent extends BaseComponent {
 
-  private recordSubscription: Subscription = null;
+  private subscription: Subscription = null;
 
   private id: string = '-1';
 
@@ -39,43 +39,55 @@ export class EditRecordComponent extends BaseComponent {
     const id = this.route.snapshot.queryParams['id'];
     if(!this.isEmptyValue(id)){
       this.stillLoading = true;
-      this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
-        if (data) {
-          this.record = this.processData(data);
-          if(!this.isEmptyValue(this.record.id)){
-            this.id = this.record.id;
+      if (this.isEmptyObject(this.subscription)) {
+        this.subscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
+          if (data) {
+            this.record = this.processData(data);
+            if(!this.isEmptyValue(this.record.id)){
+              this.id = this.record.id;
+            }
+            this.stillLoading = false;
           }
-          this.stillLoading = false;
-        }
-      });
-    } else {
-      this.editor = new EditorJS({
-        holder: 'editor',
-        tools: {
-          header: Header
-        }
-      });
+        });
+      }
     }
+    //  else {
+    //   this.editor = new EditorJS({
+    //     holder: 'editor',
+    //     tools: {
+    //       header: Header
+    //     }
+    //   });
+    // }
   }
 
   protected ngOnDestroyCustom(): void {
-    if (!this.isEmptyObject(this.recordSubscription)) {
-      this.recordSubscription.unsubscribe();
+    if (!this.isEmptyObject(this.subscription)) {
+      this.subscription.unsubscribe();
     }
   }
 
   ngAfterViewInit() {
-    if(this.isEmptyObject(this.editor)){
+    //if(this.isEmptyObject(this.editor)){
       setTimeout(() => {
-        this.editor = new EditorJS({
-          holder: 'editor',
-          tools: {
-            header: Header
-          },
-          data: this.record
-        });
+        if(this.isEmptyObject(this.record)){
+          this.editor = new EditorJS({
+            holder: 'editor',
+            tools: {
+              header: Header
+            }
+          });
+        } else {
+          this.editor = new EditorJS({
+            holder: 'editor',
+            tools: {
+              header: Header
+            },
+            data: this.record
+          });
+        }
       }, this.timeout);
-    }
+    //}
   }
 
   /**
