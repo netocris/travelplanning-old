@@ -31,6 +31,8 @@ export class EditRecordComponent extends BaseComponent {
 
   submitted: boolean = false;
 
+  success: boolean = false;
+
   constructor(private route: ActivatedRoute, private recordService: RecordService) {
     super();
   }
@@ -95,19 +97,21 @@ export class EditRecordComponent extends BaseComponent {
    */
   save(): void {
     this.submitted = true;
-    this.stillLoading = true;
-    this.editor.save().then((data) => {
-      delete data.version;
-      if(this.id === '-1') {
-        this.recordService.save(data);
-      } else {
-        this.recordService.edit(this.id, data);
-      }
-      this.submitted = false;
-      this.stillLoading = false;
-    }).catch((error) => {
-      console.error('Saving failed: ', error);
-    });
+    this.success = false;
+    setTimeout(() => {
+      this.editor.save().then((data) => {
+        delete data.version;
+        if(this.id === '-1') {
+          this.recordService.save(data);
+        } else {
+          this.recordService.edit(this.id, data);
+        }
+        this.submitted = false;
+        this.success = true;
+      }).catch((error) => {
+        console.error('Saving failed: ', error);
+      });
+    }, this.timeout);
   }
 
   /**
