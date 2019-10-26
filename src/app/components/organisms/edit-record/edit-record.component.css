@@ -30,12 +30,3 @@
   border-bottom-width: .0625em;
   border-left-width: .0625em;
 }
-
-.success-message {
-  position: fixed;
-  top: 78px;
-  right: 16px;
-  margin: 0.5em;
-  width: 250px;
-  z-index: 1200;
-}

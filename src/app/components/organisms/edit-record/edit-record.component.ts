@@ -13,6 +13,7 @@ import { IBlock } from '../../../models/i-block';
 import { Block } from '../../../models/block';
 import { IBlockContent } from '../../../models/i-block-content';
 import { BlockContent } from '../../../models/block-content';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-edit-record',
@@ -33,9 +34,9 @@ export class EditRecordComponent extends BaseComponent {
 
   success: boolean = false;
 
-  toasts: any[] = [];
+  //toasts: any[] = [];
 
-  constructor(private route: ActivatedRoute, private recordService: RecordService) {
+  constructor(private route: ActivatedRoute, private recordService: RecordService, public toastService: ToastService) {
     super();
   }
 
@@ -102,6 +103,8 @@ export class EditRecordComponent extends BaseComponent {
         }
         this.submitted = false;
         this.success = true;
+        //this.toasts.push('record saved');
+        this.showSuccess();
       }).catch((error) => {
         console.error('Saving failed: ', error);
       });
@@ -144,6 +147,10 @@ export class EditRecordComponent extends BaseComponent {
 
     return record;
 
+  }
+
+  showSuccess(): void {
+    this.toastService.show('save.success', {classname: 'bg-success text-light success-message', delay: 1000});
   }
 
 }

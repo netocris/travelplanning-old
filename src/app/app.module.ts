@@ -29,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient){
 import { AuthService } from './services/auth.service';
 import { RecordService } from './services/record.service';
 import { ConfigService } from './services/config.service';
+import { ToastService } from './services/toast.service';
 
 /* components */
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +43,7 @@ import { ListRecordComponent } from './components/organisms/list-record/list-rec
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
 import { PaginationComponent } from './components/organisms/pagination/pagination.component';
 import { FilterComponent } from './components/organisms/filter/filter.component';
+import { ToastsComponent } from './components/organisms/toasts/toasts.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     ListRecordComponent,
     EditRecordComponent,
     PaginationComponent,
-    FilterComponent
+    FilterComponent,
+    ToastsComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +82,7 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     AuthService,
     RecordService,
     ConfigService,
+    ToastService,
     {
       provide: APP_BASE_HREF,
       useValue: environment.contextPath
