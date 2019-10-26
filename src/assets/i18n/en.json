@@ -2,14 +2,33 @@
     "title": "Travel Planning",
     "add": "Add",
     "list": "List",
-    "signin": "Sign in",
-    "signout": "Sign out",
-    "save": "Save",
-    "contact.email": "netocris@gmail.com",
     "norecordsfound": "No records found",
-    "dashboard.title": "dreaming about your dream trip",
-    "dashboard.message": "always dreaming about your dream trip, why not plan it ...",
-    "list.record.table.header.date": "Date",
-    "list.record.table.header.type": "Type",
-    "list.record.table.header.text": "Text"
+    "sign": {
+        "in": "Sign in",
+        "out": "Sign out"
+    },
+    "contact": {
+        "email": "netocris@gmail.com"
+    },
+    "save": {
+        "title": "Save",
+        "success": "Record successfully saved"
+    },
+    "dashboard": {
+        "title": "Plan the next trip",
+        "message": ""
+    },
+    "record": {
+        "edit": {
+        },
+        "list": {
+            "table": {
+                "header": {
+                    "date": "Date",
+                    "type": "Type",
+                    "text": "Text"
+                }
+            }
+        }
+    }
 }

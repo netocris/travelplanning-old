@@ -14,7 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 /* ng-bootstrap */
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbPaginationModule, NgbTooltipModule, NgbToastModule } from "@ng-bootstrap/ng-bootstrap";
 
 /* ngx-translate */
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -42,8 +42,6 @@ import { ListRecordComponent } from './components/organisms/list-record/list-rec
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
 import { PaginationComponent } from './components/organisms/pagination/pagination.component';
 import { FilterComponent } from './components/organisms/filter/filter.component';
-import { DismissButtonComponent } from './components/atoms/dismiss-button/dismiss-button.component';
-import { AlertDismissComponent } from './components/molecules/alert-dismiss/alert-dismiss.component';
 
 @NgModule({
   declarations: [
@@ -56,9 +54,7 @@ import { AlertDismissComponent } from './components/molecules/alert-dismiss/aler
     ListRecordComponent,
     EditRecordComponent,
     PaginationComponent,
-    FilterComponent,
-    DismissButtonComponent,
-    AlertDismissComponent
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +64,9 @@ import { AlertDismissComponent } from './components/molecules/alert-dismiss/aler
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    NgbModule,
+    NgbPaginationModule,
+    NgbTooltipModule,
+    NgbToastModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

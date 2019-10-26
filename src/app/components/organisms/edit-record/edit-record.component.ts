@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -33,6 +33,8 @@ export class EditRecordComponent extends BaseComponent {
 
   success: boolean = false;
 
+  toasts: any[] = [];
+
   constructor(private route: ActivatedRoute, private recordService: RecordService) {
     super();
   }
@@ -53,14 +55,6 @@ export class EditRecordComponent extends BaseComponent {
         });
       }
     }
-    //  else {
-    //   this.editor = new EditorJS({
-    //     holder: 'editor',
-    //     tools: {
-    //       header: Header
-    //     }
-    //   });
-    // }
   }
 
   protected ngOnDestroyCustom(): void {

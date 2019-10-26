@@ -2,12 +2,12 @@
 
 <ng-template #editRecordTemplate>
 
-    <app-alert-dismiss [heading]="'record.edit.successfully' | translate" [class]="'alert-success'"
-        *ngIf="success">
-    </app-alert-dismiss>
+    <ngb-toast [class]="'bg-success text-light success-message'" [delay]="1000" (hide)="success = false" *ngIf="success">
+        {{ 'save.success' | translate }}
+    </ngb-toast>
 
     <div class="row">
-        <div class="col-sm-12 col-md-6 mb-3 scrollbar">
+        <div class="col-sm-12 col-md-12 mb-3 scrollbar">
             <div class="scroll-enable">
                 <!--<app-editor [previousData]="record" (editorOutputEventEmitter)="save($event)"></app-editor>-->
                 <div id="editor"></div>
@@ -15,12 +15,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-6">
-            <!--<button class="btn btn-outline-primary" (click)="save()">Save</button>-->
+        <div class="col-sm-12 col-md-6 pl-0">
             <button class="btn btn-outline-primary" [disabled]="submitted" (click)="save()">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
-                {{ 'save' | translate }}
+                {{ 'save.title' | translate }}
             </button>
+            <!--<span *ngIf="success" class="text-muted ml-2"><small>{{'edit.record.successfully' | translate}}</small></span>-->
         </div>
     </div>
 </ng-template>
