@@ -2,14 +2,6 @@
 
 <ng-template #editRecordTemplate>
 
-    <!--<ngb-toast [class]="'bg-success text-light success-message'" [delay]="1000" (hide)="success = false" *ngIf="success">
-        {{ 'save.success' | translate }}
-    </ngb-toast>-->
-    <!--<div *ngIf="success">
-        <ngb-toast *ngFor="let toast of toastService.toasts" [class]="toast.options.classname" [delay]="toast.options.delay || 2000" (hide)="toastService.remove(toast)">
-            {{ toast.content | translate }}
-        </ngb-toast>
-    </div>-->
     <app-toasts aria-live="polite" aria-atomic="true"
         [toasts]="toasts" (hideOutputEventEmitter)="hideSuccess($event)" *ngIf="success">
     </app-toasts>

@@ -4,7 +4,7 @@
   [delay]="toast.delay || delay"
   (hide)="hideEventEmitter(toast)">
 
-  <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
+  <ng-template *ngIf="isTemplate(toast); else text">
     <ng-template [ngTemplateOutlet]="toast.textOrTpl"></ng-template>
   </ng-template>
 

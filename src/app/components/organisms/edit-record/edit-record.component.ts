@@ -112,16 +112,21 @@ export class EditRecordComponent extends BaseComponent {
     this.success = false;
     setTimeout(() => {
       this.editor.save().then((data) => {
-        delete data.version;
-        if(this.id === '-1') {
-          this.recordService.save(data);
-        } else {
-          this.recordService.edit(this.id, data);
+        if(data && !this.isEmptyArray(data.blocks)){
+          delete data.version;
+          if(this.id === '-1') {
+            this.recordService.save(data);
+          } else {
+            this.recordService.edit(this.id, data);
+          }
+          this.success = true;
         }
+
         this.submitted = false;
-        this.success = true;
-        //this.toasts.push('record saved');
-        this.showSuccess();
+        if(this.success){
+          this.showSuccess();
+        }
+
       }).catch((error) => {
         console.error('Saving failed: ', error);
       });
@@ -167,7 +172,7 @@ export class EditRecordComponent extends BaseComponent {
   }
 
   showSuccess(): void {
-    this.toastService.add('save.success', {classname: 'bg-success text-light', delay: 1000});
+    this.toastService.add('save.success', {classname: 'bg-success text-light'});
   }
 
   hideSuccess(toast: any): void {
