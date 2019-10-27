@@ -26,7 +26,12 @@
                 "header": {
                     "date": "Date",
                     "type": "Type",
-                    "text": "Text"
+                    "text": "Text",
+                    "actions": "Actions"
+                },
+                "tooltip": {
+                    "edit": "Edit record",
+                    "delete": "Delete record"
                 }
             }
         }

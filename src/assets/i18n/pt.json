@@ -26,7 +26,12 @@
                 "header": {
                     "date": "Data",
                     "type": "Tipo",
-                    "text": "Texto"
+                    "text": "Texto",
+                    "actions": "Operações"
+                },
+                "tooltip": {
+                    "edit": "Editar registo",
+                    "delete": "Apagar registo"
                 }
             }
         }

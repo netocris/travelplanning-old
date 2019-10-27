@@ -25,7 +25,6 @@ export class FooterComponent extends BaseComponent {
   }
 
   onChange(value: any): void {
-    console.log(value.target.checked);
     if(value.target.checked){
       this.trans();
       this.document.documentElement.setAttribute('data-theme', 'dark');

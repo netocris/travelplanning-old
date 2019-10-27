@@ -10,7 +10,7 @@ html {
     --bg: #fff;
     --bg-panel: #ebebeb;
     --color-headings: #0077ff;
-    --color-text: #333333;
+    --color-text: #343a40;
     --color-border: #dee2ed;
 }
 
@@ -26,8 +26,10 @@ html[data-theme='dark'] {
 body {
     font-size: 14px;
     margin-bottom: 60px; /* Margin bottom by footer height */
-    background-color: var(--bg);
-    color: var(--color-text);    
+    /*background-color: var(--bg);
+    color: var(--color-text);*/
+    background-color: #fff;
+    color: #343a40;
 }
 
 .font-size-gt {
@@ -39,14 +41,15 @@ body {
 }
 
 h1, h4, h5 {
-    color: var(--color-headings) !important;
+    /*color: var(--color-headings) !important;*/
+    color: #0077ff !important;
 }
 
 .container {
     max-width: 97%;
     /*background-color: var(--bg-panel);*/
 }
-  
+
 #editor > .codex-editor > .codex-editor__redactor {
     padding-bottom: 2% !important;
 }
@@ -57,4 +60,21 @@ h1, h4, h5 {
 
 #editor > .codex-editor > .ce-toolbar > .ce-toolbar__content {
     margin: 0 10% auto !important;
+}
+
+/* TODO: devia estar no header component, mas devido a um bug na criação da distribuição para produção o var() não é reconhecido */
+.border-bottom {
+    /*border-bottom: 1px solid var(--color-border) !important;*/
+    border-bottom: 1px solid #dee2ed !important;
+}
+
+/* TODO: devia estar no header component, mas devido a um bug na criação da distribuição para produção o var() não é reconhecido */
+.border-top {
+    /*border-top: 1px solid var(--color-border) !important;*/
+    border-top: 1px solid #dee2ed !important;
+}
+
+.text-custom {
+    /*color: var(--color-text) !important;*/
+    color: #343a40 !important;
 }
