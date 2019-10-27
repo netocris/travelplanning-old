@@ -1,4 +1,5 @@
 import { Injectable, TemplateRef } from '@angular/core';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { BaseService } from './base.service';
 
 @Injectable({
@@ -6,14 +7,18 @@ import { BaseService } from './base.service';
 })
 export class ToastService extends BaseService {
 
+  toastSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  toastObservable: Observable<any[]> = this.toastSubject.asObservable();
   toasts: any[] = [];
 
-  show(textOrTpl: string | TemplateRef<any>, options: any = {}) {
+  add(textOrTpl: string | TemplateRef<any>, options: any = {}) {
     this.toasts.push({ textOrTpl, ...options });
+    this.toastSubject.next(this.toasts);
   }
 
-  remove(toast) {
+  delete(toast) {
     this.toasts = this.toasts.filter(t => t !== toast);
+    this.toastSubject.next(this.toasts);
   }
 
 }

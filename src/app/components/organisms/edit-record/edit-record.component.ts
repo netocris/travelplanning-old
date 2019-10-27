@@ -22,7 +22,8 @@ import { ToastService } from '../../../services/toast.service';
 })
 export class EditRecordComponent extends BaseComponent {
 
-  private subscription: Subscription = null;
+  private recordSubscription: Subscription = null;
+  private toastSubscription: Subscription = null;
 
   private id: string = '-1';
 
@@ -34,18 +35,19 @@ export class EditRecordComponent extends BaseComponent {
 
   success: boolean = false;
 
-  //toasts: any[] = [];
+  toasts: any[] = [];
 
   constructor(private route: ActivatedRoute, private recordService: RecordService, public toastService: ToastService) {
     super();
   }
 
   protected ngOnInitCustom(): void {
+
     const id = this.route.snapshot.queryParams['id'];
     if(!this.isEmptyValue(id)){
-      if (this.isEmptyObject(this.subscription)) {
+      if (this.isEmptyObject(this.recordSubscription)) {
         this.stillLoading = true;
-        this.subscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
+        this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
           if (data) {
             this.record = this.processData(data);
             if(!this.isEmptyValue(this.record.id)){
@@ -56,12 +58,27 @@ export class EditRecordComponent extends BaseComponent {
         });
       }
     }
+
+    if (this.isEmptyObject(this.toastSubscription)) {
+      this.toastSubscription = this.toastService.toastObservable.subscribe((data: any[]) => {
+        if (data) {
+          this.toasts = data;
+        }
+      });
+    }
+
   }
 
   protected ngOnDestroyCustom(): void {
-    if (!this.isEmptyObject(this.subscription)) {
-      this.subscription.unsubscribe();
+
+    if (!this.isEmptyObject(this.recordSubscription)) {
+      this.recordSubscription.unsubscribe();
     }
+
+    if (!this.isEmptyObject(this.toastSubscription)) {
+      this.toastSubscription.unsubscribe();
+    }
+
   }
 
   ngAfterViewInit() {
@@ -150,7 +167,11 @@ export class EditRecordComponent extends BaseComponent {
   }
 
   showSuccess(): void {
-    this.toastService.show('save.success', {classname: 'bg-success text-light success-message', delay: 1000});
+    this.toastService.add('save.success', {classname: 'bg-success text-light', delay: 1000});
+  }
+
+  hideSuccess(toast: any): void {
+    this.toastService.delete(toast);
   }
 
 }

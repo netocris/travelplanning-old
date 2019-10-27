@@ -10,7 +10,9 @@
             {{ toast.content | translate }}
         </ngb-toast>
     </div>-->
-    <app-toasts aria-live="polite" aria-atomic="true" *ngIf="success"></app-toasts>
+    <app-toasts aria-live="polite" aria-atomic="true"
+        [toasts]="toasts" (hideOutputEventEmitter)="hideSuccess($event)" *ngIf="success">
+    </app-toasts>
 
     <div class="row">
         <div class="col-sm-12 col-md-12 mb-3 scrollbar">
