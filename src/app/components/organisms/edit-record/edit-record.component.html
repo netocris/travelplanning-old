@@ -3,7 +3,7 @@
 <ng-template #editRecordTemplate>
 
     <app-toasts aria-live="polite" aria-atomic="true"
-        [toasts]="toasts" (hideOutputEventEmitter)="hideSuccess($event)" *ngIf="success">
+        [toasts]="toasts" (hideOutputEventEmitter)="hideMessage($event)" *ngIf="success">
     </app-toasts>
 
     <div class="row">

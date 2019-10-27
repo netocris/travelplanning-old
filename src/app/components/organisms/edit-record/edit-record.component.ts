@@ -1,5 +1,5 @@
-import { Component, TemplateRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import EditorJS from '@editorjs/editorjs';
@@ -37,15 +37,17 @@ export class EditRecordComponent extends BaseComponent {
 
   toasts: any[] = [];
 
-  constructor(private route: ActivatedRoute, private recordService: RecordService, public toastService: ToastService) {
+  constructor(private route: ActivatedRoute, private router: Router, private recordService: RecordService, public toastService: ToastService) {
     super();
   }
 
   protected ngOnInitCustom(): void {
 
-    const id = this.route.snapshot.queryParams['id'];
-    if(!this.isEmptyValue(id)){
-      if (this.isEmptyObject(this.recordSubscription)) {
+    // use observable approach
+    this.route.paramMap.subscribe((params) => {
+      this.record = null;
+      const id = params.get('id');
+      if(!this.isEmptyValue(id) && this.isEmptyObject(this.recordSubscription)){
         this.stillLoading = true;
         this.recordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
           if (data) {
@@ -53,11 +55,15 @@ export class EditRecordComponent extends BaseComponent {
             if(!this.isEmptyValue(this.record.id)){
               this.id = this.record.id;
             }
+            this.initializeEditor(true);
             this.stillLoading = false;
           }
         });
+      } else {
+        this.initializeEditor(false);
       }
-    }
+    });
+
 
     if (this.isEmptyObject(this.toastSubscription)) {
       this.toastSubscription = this.toastService.toastObservable.subscribe((data: any[]) => {
@@ -81,29 +87,6 @@ export class EditRecordComponent extends BaseComponent {
 
   }
 
-  ngAfterViewInit() {
-    //if(this.isEmptyObject(this.editor)){
-      setTimeout(() => {
-        if(this.isEmptyObject(this.record)){
-          this.editor = new EditorJS({
-            holder: 'editor',
-            tools: {
-              header: Header
-            }
-          });
-        } else {
-          this.editor = new EditorJS({
-            holder: 'editor',
-            tools: {
-              header: Header
-            },
-            data: this.record
-          });
-        }
-      }, this.timeout);
-    //}
-  }
-
   /**
    * save data
    */
@@ -124,13 +107,29 @@ export class EditRecordComponent extends BaseComponent {
 
         this.submitted = false;
         if(this.success){
-          this.showSuccess();
+          this.showMessageSuccess();
         }
 
       }).catch((error) => {
         console.error('Saving failed: ', error);
       });
     }, this.timeout);
+  }
+
+  /**
+   * show success message
+   */
+  showMessageSuccess(): void {
+    this.toastService.add('save.success', {classname: 'bg-success text-light'});
+  }
+
+  /**
+   * hide success message
+   *
+   * @param toast
+   */
+  hideMessage(toast: any): void {
+    this.toastService.delete(toast);
   }
 
   /**
@@ -171,12 +170,30 @@ export class EditRecordComponent extends BaseComponent {
 
   }
 
-  showSuccess(): void {
-    this.toastService.add('save.success', {classname: 'bg-success text-light'});
-  }
-
-  hideSuccess(toast: any): void {
-    this.toastService.delete(toast);
+  /**
+   * initialize editor instance
+   *
+   * @param edit
+   */
+  private initializeEditor(edit: boolean): void {
+    setTimeout(() => {
+      if(edit){
+        this.editor = new EditorJS({
+          holder: 'editor',
+          tools: {
+            header: Header
+          },
+          data: this.record
+        });
+      } else {
+        this.editor = new EditorJS({
+          holder: 'editor',
+          tools: {
+            header: Header
+          }
+        });
+      }
+    }, this.timeout);
   }
 
 }

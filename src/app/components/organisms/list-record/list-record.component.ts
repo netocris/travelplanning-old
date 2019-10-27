@@ -59,9 +59,10 @@ export class ListRecordComponent extends BaseComponent {
    * @param id record id
    */
   edit(id: string){
-    this.router.navigate(['/edit'], {
-      queryParams: { id: id }
-    });
+    this.router.navigate(['/edit', id]);
+    // this.router.navigate(['/edit'], {
+    //   queryParams: { id: id }
+    // });
   }
 
   /**
