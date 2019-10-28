@@ -1,0 +1,7 @@
+<div class="row" *ngIf="records.length > pageSize">
+    <div class="col-md-12">
+        <ngb-pagination class="d-flex justify-content-end" [collectionSize]="records.length" [(page)]="page"
+            [pageSize]="pageSize" aria-label="Default pagination" [boundaryLinks]="true" (pageChange)="pageEventEmitter($event)">
+        </ngb-pagination>           
+    </div>
+</div>

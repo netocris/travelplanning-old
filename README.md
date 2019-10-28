@@ -4,20 +4,19 @@ Planning your travels
 
 ## Project dependencies
 
-#### Bootstrap
-
-    npm install jquery popper.js bootstrap --save
+    npm install jquery popper.js bootstrap font-awesome --save
 
     npm install @ng-bootstrap/ng-bootstrap --save
 
-#### Firebase 6
+    npm install @ngx-translate/core @ngx-translate/http-loader --save
 
     npm install @angular/fire firebase --save
 
-## Configure Bootstrap
+## Configure project dependencies
 
     "styles": [
-        "node_modules/bootstrap/dist/css/bootstrap.min.css",        
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "node_modules/font-awesome/css/font-awesome.min.css",
         "src/styles.css"
     ],
     "scripts": [
@@ -26,7 +25,16 @@ Planning your travels
         "node_modules/bootstrap/dist/js/bootstrap.min.js"
     ]
 
-## Run in a different port witout or with locale
+## Run in a different port
 
     ng serve --port=4201
+
+## Deploy to Firebase
+
+    ng build --prod (update environment.prod.ts file with firebase configuration previously)
+    firebase login
+    firebase deploy
+    firebase logout
+
+
 

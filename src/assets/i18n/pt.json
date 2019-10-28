@@ -1,0 +1,43 @@
+{
+    "title": "Travel Planning",
+    "add": "Adicionar",
+    "list": "Consultar",
+    "norecordsfound": "Nenhum registo encontrado",
+    "sign": {
+        "in": "Entrar",
+        "out": "Sair"
+    },
+    "contact": {
+        "contactus": "contacte-nos",
+        "email": "suportetravelplanning@gmail.com"
+    },
+    "save": {
+        "title": "Gravar",
+        "success": "Registo gravado com sucesso"
+    },
+    "dashboard": {
+        "title": "",
+        "message": ""
+    },
+    "record": {
+        "edit": {
+        },
+        "list": {
+            "table": {
+                "header": {
+                    "date": "Data",
+                    "type": "Tipo",
+                    "text": "Texto",
+                    "actions": "Operações"
+                },
+                "tooltip": {
+                    "edit": "Editar registo",
+                    "delete": "Apagar registo"
+                }
+            }
+        }
+    },
+    "settings": {
+        "title": "Configurações"
+    }
+}

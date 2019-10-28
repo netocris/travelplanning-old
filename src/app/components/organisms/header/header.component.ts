@@ -1,8 +1,8 @@
-import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/user';
-import { BaseComponent } from '../../base/base.component';
+import { IUser } from '../../../models/i-user';
+import { BaseComponent } from '../../base.component';
 
 
 @Component({
@@ -11,36 +11,33 @@ import { BaseComponent } from '../../base/base.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent extends BaseComponent {
-  
-  private currentUser: User;
+    
+  private currentUser: IUser;
   isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService, private router: Router,
     @Inject(LOCALE_ID) protected lang: string) {
-      super();
+      super();      
      }
-
-  ngOnInit() {
-  }
-
+  
   protected ngOnInitCustom(): void {
-    this.authService.user.subscribe(user => {
+    this.authService.user.subscribe(user => {      
       this.isLoggedIn = false;
       this.currentUser = null;
       if (user) {
         this.isLoggedIn = true;
-        this.currentUser = user;
-        this.router.navigate(['/dashboard']);
+        this.currentUser = user;        
       }
+      this.router.navigate(['/dashboard']);
     });
   }
-
+  
   login(): void {
     this.authService.signIn();
   }
 
   logout(): void {
-    this.authService.signOut();
+    this.authService.signOut();    
   }
 
   getUserDisplayName(): string {

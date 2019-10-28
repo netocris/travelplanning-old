@@ -1,0 +1,43 @@
+{
+    "title": "Travel Planning",
+    "add": "Add",
+    "list": "List",
+    "norecordsfound": "No records found",
+    "sign": {
+        "in": "Sign in",
+        "out": "Sign out"
+    },
+    "contact": {
+        "contactus": "contact us",
+        "email": "suportetravelplanning"
+    },
+    "save": {
+        "title": "Save",
+        "success": "Record successfully saved"
+    },
+    "dashboard": {
+        "title": "",
+        "message": ""
+    },
+    "record": {
+        "edit": {
+        },
+        "list": {
+            "table": {
+                "header": {
+                    "date": "Date",
+                    "type": "Type",
+                    "text": "Text",
+                    "actions": "Actions"
+                },
+                "tooltip": {
+                    "edit": "Edit record",
+                    "delete": "Delete record"
+                }
+            }
+        }
+    },
+    "settings": {
+        "title": "Settings"
+    }
+}
