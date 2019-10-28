@@ -1,11 +1,43 @@
-{    
+{
     "title": "Travel Planning",
     "add": "Adicionar",
     "list": "Consultar",
-    "signin": "Entrar",
-    "signout": "Sair",
-    "contact.email": "netocris@gmail.com",
     "norecordsfound": "Nenhum registo encontrado",
-    "dashboard.title": "aquela viagem de sonho",
-    "dashboard.message": "sempre a sonhar com a sua viagem de sonho, porque não planeá-la ..."
+    "sign": {
+        "in": "Entrar",
+        "out": "Sair"
+    },
+    "contact": {
+        "contactus": "contacte-nos",
+        "email": "suportetravelplanning@gmail.com"
+    },
+    "save": {
+        "title": "Gravar",
+        "success": "Registo gravado com sucesso"
+    },
+    "dashboard": {
+        "title": "",
+        "message": ""
+    },
+    "record": {
+        "edit": {
+        },
+        "list": {
+            "table": {
+                "header": {
+                    "date": "Data",
+                    "type": "Tipo",
+                    "text": "Texto",
+                    "actions": "Operações"
+                },
+                "tooltip": {
+                    "edit": "Editar registo",
+                    "delete": "Apagar registo"
+                }
+            }
+        }
+    },
+    "settings": {
+        "title": "Configurações"
+    }
 }

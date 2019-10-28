@@ -1,24 +1,24 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { IRecordDto } from '../../../models/i-record-dto';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { IRecord } from '../../../models/i-record';
+import { BaseComponent } from '../../base.component';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent extends BaseComponent {
 
   value: string;
 
   @Input()
-  records: IRecordDto[];
+  records: IRecord[];
 
   @Output()
   searchOutputEventEmitter = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    super();
   }
 
   search(): void {

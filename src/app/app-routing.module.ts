@@ -5,37 +5,41 @@ import { NotFoundComponent } from './components/atoms/not-found/not-found.compon
 import { DashboardComponent } from './components/organisms/dashboard/dashboard.component';
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
-import { AddRecordComponent } from './components/organisms/add-record/add-record.component';
+import { SettingsComponent } from './components/organisms/settings/settings.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    pathMatch: 'full', 
-    redirectTo: 'dashboard' 
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'dashboard'
   },
-  { 
-    path: 'dashboard', 
-    component: DashboardComponent 
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   },
-  { 
-    path: 'add', 
-    component: AddRecordComponent,
-    canActivate: [AuthGuard]
-  },
-  { 
-    path: 'edit', 
+  {
+    path: 'edit',
     component: EditRecordComponent,
     canActivate: [AuthGuard]
   },
-  { 
-    path: 'list', 
+  {
+    path: 'edit/:id',
+    component: EditRecordComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'list',
     component: ListRecordComponent,
     canActivate: [AuthGuard]
   },
-  { 
-    path: '**', 
-    pathMatch: 'full', 
-    component: NotFoundComponent 
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

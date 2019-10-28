@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { APP_BASE_HREF, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
 
@@ -14,7 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 /* ng-bootstrap */
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbPaginationModule, NgbTooltipModule, NgbToastModule } from "@ng-bootstrap/ng-bootstrap";
 
 /* ngx-translate */
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -29,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient){
 import { AuthService } from './services/auth.service';
 import { RecordService } from './services/record.service';
 import { ConfigService } from './services/config.service';
+import { ToastService } from './services/toast.service';
 
 /* components */
 import { AppRoutingModule } from './app-routing.module';
@@ -37,14 +38,12 @@ import { SpinnerComponent } from './components/atoms/spinner/spinner.component';
 import { NotFoundComponent } from './components/atoms/not-found/not-found.component';
 import { DashboardComponent } from './components/organisms/dashboard/dashboard.component';
 import { HeaderComponent } from './components/organisms/header/header.component';
-import { FooterComponent } from './components/organisms/footer/footer.component';
-import { EditorComponent } from './components/editor/editor.component';
-import { AddRecordComponent } from './components/organisms/add-record/add-record.component';
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
-import { DrawRecordComponent } from './components/organisms/draw-record/draw-record.component';
 import { PaginationComponent } from './components/organisms/pagination/pagination.component';
 import { FilterComponent } from './components/organisms/filter/filter.component';
+import { ToastsComponent } from './components/organisms/toasts/toasts.component';
+import { SettingsComponent } from './components/organisms/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -53,14 +52,12 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     NotFoundComponent,
     DashboardComponent,
     HeaderComponent,
-    FooterComponent,
-    EditorComponent,
-    AddRecordComponent,
     ListRecordComponent,
     EditRecordComponent,
-    DrawRecordComponent,
     PaginationComponent,
-    FilterComponent
+    FilterComponent,
+    ToastsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +67,9 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    NgbModule,
+    NgbPaginationModule,
+    NgbTooltipModule,
+    NgbToastModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -83,10 +82,7 @@ import { FilterComponent } from './components/organisms/filter/filter.component'
     AuthService,
     RecordService,
     ConfigService,
-    {
-      provide: APP_BASE_HREF,
-      useValue: environment.contextPath
-    },
+    ToastService,
     {
       provide: LOCALE_ID, useValue: 'pt'
     },

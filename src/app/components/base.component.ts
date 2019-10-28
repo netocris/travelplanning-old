@@ -3,8 +3,8 @@ import { OnInit } from '@angular/core';
 export abstract class BaseComponent implements OnInit {
 
   stillLoading: boolean = false;
-  protected timeout: number = 100;
-  
+  protected timeout: number = 200;
+
   constructor() { }
 
   ngOnInit() {
@@ -30,6 +30,13 @@ export abstract class BaseComponent implements OnInit {
 
   protected isEmptyArray(value: any[]) {
     if (value === undefined || value === null || value.length <= 0) {
+        return true;
+    }
+    return false;
+  }
+
+  protected isEmptyValue(value: string) {
+    if (value === undefined || value === null || value.split(' ').join('') === '') {
         return true;
     }
     return false;

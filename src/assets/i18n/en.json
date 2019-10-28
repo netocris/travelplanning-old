@@ -1,11 +1,43 @@
-{    
+{
     "title": "Travel Planning",
     "add": "Add",
     "list": "List",
-    "signin": "Sign in",
-    "signout": "Sign out",
-    "contact.email": "netocris@gmail.com",
     "norecordsfound": "No records found",
-    "dashboard.title": "dreaming about your dream trip",
-    "dashboard.message": "always dreaming about your dream trip, why not plan it ..."
+    "sign": {
+        "in": "Sign in",
+        "out": "Sign out"
+    },
+    "contact": {
+        "contactus": "contact us",
+        "email": "suportetravelplanning"
+    },
+    "save": {
+        "title": "Save",
+        "success": "Record successfully saved"
+    },
+    "dashboard": {
+        "title": "",
+        "message": ""
+    },
+    "record": {
+        "edit": {
+        },
+        "list": {
+            "table": {
+                "header": {
+                    "date": "Date",
+                    "type": "Type",
+                    "text": "Text",
+                    "actions": "Actions"
+                },
+                "tooltip": {
+                    "edit": "Edit record",
+                    "delete": "Delete record"
+                }
+            }
+        }
+    },
+    "settings": {
+        "title": "Settings"
+    }
 }
