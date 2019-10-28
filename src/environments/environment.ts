@@ -4,15 +4,14 @@
 
 export const environment = {
   production: false,
-  contextPath: '/travelplanning',
   firebase: {
-    apiKey: "AIzaSyDlgmqz1lzU9lOLukwaVm-hHNOpUoNYAVg",
-    authDomain: "travelplanning-8b325.firebaseapp.com",
-    databaseURL: "https://travelplanning-8b325.firebaseio.com",
-    projectId: "travelplanning-8b325",
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
     storageBucket: "",
-    messagingSenderId: "775087305746",
-    appId: "1:775087305746:web:5bbb7b8e2eeadbf4c514cb"
+    messagingSenderId: "",
+    appId: ""
   }
 };
 
