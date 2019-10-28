@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { APP_BASE_HREF, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
 
@@ -83,10 +83,6 @@ import { ToastsComponent } from './components/organisms/toasts/toasts.component'
     RecordService,
     ConfigService,
     ToastService,
-    {
-      provide: APP_BASE_HREF,
-      useValue: environment.contextPath
-    },
     {
       provide: LOCALE_ID, useValue: 'pt'
     },
