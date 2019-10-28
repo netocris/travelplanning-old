@@ -38,12 +38,12 @@ import { SpinnerComponent } from './components/atoms/spinner/spinner.component';
 import { NotFoundComponent } from './components/atoms/not-found/not-found.component';
 import { DashboardComponent } from './components/organisms/dashboard/dashboard.component';
 import { HeaderComponent } from './components/organisms/header/header.component';
-import { FooterComponent } from './components/organisms/footer/footer.component';
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
 import { PaginationComponent } from './components/organisms/pagination/pagination.component';
 import { FilterComponent } from './components/organisms/filter/filter.component';
 import { ToastsComponent } from './components/organisms/toasts/toasts.component';
+import { SettingsComponent } from './components/organisms/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -52,12 +52,12 @@ import { ToastsComponent } from './components/organisms/toasts/toasts.component'
     NotFoundComponent,
     DashboardComponent,
     HeaderComponent,
-    FooterComponent,
     ListRecordComponent,
     EditRecordComponent,
     PaginationComponent,
     FilterComponent,
-    ToastsComponent
+    ToastsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

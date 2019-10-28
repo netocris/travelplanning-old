@@ -42,7 +42,7 @@ body {
 
 h1, h4, h5 {
     /*color: var(--color-headings) !important;*/
-    color: #0077ff !important;
+    /*color: #0077ff !important;*/
 }
 
 .container {

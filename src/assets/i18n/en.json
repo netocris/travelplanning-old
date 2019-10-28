@@ -8,14 +8,15 @@
         "out": "Sign out"
     },
     "contact": {
-        "email": "netocris@gmail.com"
+        "contactus": "contact us",
+        "email": "suportetravelplanning"
     },
     "save": {
         "title": "Save",
         "success": "Record successfully saved"
     },
     "dashboard": {
-        "title": "Plan the next trip",
+        "title": "",
         "message": ""
     },
     "record": {
@@ -35,5 +36,8 @@
                 }
             }
         }
+    },
+    "settings": {
+        "title": "Settings"
     }
 }

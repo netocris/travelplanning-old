@@ -8,14 +8,15 @@
         "out": "Sair"
     },
     "contact": {
-        "email": "netocris@gmail.com"
+        "contactus": "contacte-nos",
+        "email": "suportetravelplanning@gmail.com"
     },
     "save": {
         "title": "Gravar",
         "success": "Registo gravado com sucesso"
     },
     "dashboard": {
-        "title": "Planeie a próxima viagem",
+        "title": "",
         "message": ""
     },
     "record": {
@@ -35,5 +36,8 @@
                 }
             }
         }
+    },
+    "settings": {
+        "title": "Configurações"
     }
 }

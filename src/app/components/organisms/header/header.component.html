@@ -1,11 +1,12 @@
 <header>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">
-      {{ 'title' | translate }}
-    </h5>
+    <a class="my-0 mr-md-auto font-weight-normal text-capitalize text-custom" href="#" routerLink="/">
+       {{ 'title' | translate }}
+    </a>
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-custom" href="#" routerLink="/edit" *ngIf="isLoggedIn">{{ 'add' | translate }}</a>
       <a class="p-2 text-custom" href="#" routerLink="/list" *ngIf="isLoggedIn">{{ 'list' | translate }}</a>
+      <a class="p-2 text-custom" href="#" routerLink="/settings" *ngIf="isLoggedIn"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
     </nav>
     <span class="my-2 my-md-0 mr-md-3 login-info" *ngIf="isLoggedIn">
       <img src="{{getUserPhoto()}}" title="{{getUserDisplayName()}}" alt="User photo">

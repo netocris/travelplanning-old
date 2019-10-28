@@ -5,6 +5,7 @@ import { NotFoundComponent } from './components/atoms/not-found/not-found.compon
 import { DashboardComponent } from './components/organisms/dashboard/dashboard.component';
 import { ListRecordComponent } from './components/organisms/list-record/list-record.component';
 import { EditRecordComponent } from './components/organisms/edit-record/edit-record.component';
+import { SettingsComponent } from './components/organisms/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListRecordComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
     canActivate: [AuthGuard]
   },
   {

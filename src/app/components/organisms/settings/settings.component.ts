@@ -1,14 +1,15 @@
-import { Component, Inject, LOCALE_ID } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, Input, Output, EventEmitter, Inject, LOCALE_ID } from '@angular/core';
+import { IRecord } from '../../../models/i-record';
 import { BaseComponent } from '../../base.component';
+import { DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.css']
 })
-export class FooterComponent extends BaseComponent {
+export class SettingsComponent extends BaseComponent {
 
   year: number = 1800;
 
@@ -36,7 +37,7 @@ export class FooterComponent extends BaseComponent {
 
   useLanguage(language: string): void {
     this.translate.use(language);
-}
+  }
 
   private trans(): void {
     this.document.documentElement.classList.add('transition');
