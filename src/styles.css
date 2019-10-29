@@ -78,3 +78,25 @@ h1, h4, h5 {
     /*color: var(--color-text) !important;*/
     color: #343a40 !important;
 }
+
+/* editor js custom css */
+h2.ce-header {
+    color: darkblue;
+    padding: 0 0 1em 0;
+}
+
+h6.ce-header {
+    color: darkblue;
+    border-bottom: 1px solid darkblue;
+    padding: 1em 0 0 0;
+    margin-bottom: 0;
+}
+
+.ce-delimiter:before {
+    font-size: 30px;
+}
+
+.cdx-block {
+    padding: .5em 0;
+}
+/**/
