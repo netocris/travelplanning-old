@@ -5,32 +5,37 @@
     </div>
 
     <div class="row mb-3">
-        <div class="col-sm-12 col-md-3 text-capitalize">Linguagem</div>
-        <div class="col-sm-12 col-md-9 text-left">
-            <a class="p-1 font-size-sm text-custom" href="#" *ngFor="let lang of langList" (click)="useLanguage(lang.code)">
+        <div class="col-sm-12 col-md-2 text-capitalize">Linguagem</div>
+        <div class="col-sm-12 col-md-2 text-left">
+                <select class="custom-select d-block w-100" id="country" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let lang of langList" (click)="useLanguage(lang.code)">{{ lang.label }}</option>
+                </select>
+
+            <!--<a class="p-1 font-size-sm text-custom" href="#" *ngFor="let lang of langList" (click)="useLanguage(lang.code)">
                 {{ lang.label }}
-            </a>
+            </a>-->
         </div>
     </div>
 
     <div class="row mb-3">
-        <div class="col-sm-12 col-md-3 text-capitalize">activar/desactivar dark mode</div>
-        <div class="col-sm-12 col-md-9 text-left">
+        <div class="col-sm-12 col-md-2 text-capitalize">activar/desactivar dark mode</div>
+        <div class="col-sm-12 col-md-2 text-left">
             <input type="checkbox" id="switch" name="theme" (change)="onChange($event)" /> <label for="switch">Toggle</label>
         </div>
     </div>
 
     <div class="row mb-3">
-        <div class="col-sm-12 col-md-3 text-capitalize">Contacte-nos</div>
-        <div class="col-sm-12 col-md-9 text-left text-capitalize">
+        <div class="col-sm-12 col-md-2 text-capitalize">Contacte-nos</div>
+        <div class="col-sm-12 col-md-10 text-left">
             <a href="mailto:{{ 'contact.email' | translate }}">{{ 'contact.contactus' | translate }}</a>
         </div>
     </div>
 
     <div class="row mb-3">
-        <div class="col-sm-12 col-md-3 text-capitalize">Desde</div>
-        <div class="col-sm-12 col-md-9 text-left text-capitalize">
-            @{{ year }}
+        <div class="col-sm-12 col-md-2 text-capitalize">Desde</div>
+        <div class="col-sm-12 col-md-10 text-left text-capitalize">
+            &copy; {{ year }}
         </div>
     </div>
 

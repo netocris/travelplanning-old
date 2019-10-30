@@ -13,7 +13,7 @@ export class SettingsComponent extends BaseComponent {
 
   year: number = 1800;
 
-  langList = [ {'code': 'pt', 'label': 'PT'}, {'code': 'en', 'label': 'EN'}];
+  langList = [ {'code': 'pt', 'label': 'Portuguese'}, {'code': 'en', 'label': 'English'}];
 
   constructor(@Inject(DOCUMENT) private document: Document,
     @Inject(LOCALE_ID) protected lang: string,
