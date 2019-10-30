@@ -80,12 +80,13 @@ h1, h4, h5 {
 }
 
 /* editor js custom css */
-h2.ce-header {
+#editor-preview h2.ce-header {
     color: darkblue;
-    padding: 0 0 1em 0;
+    /*padding: 0 0 1em 0;*/
+    /*line-height: 1.2em;*/
 }
 
-h6.ce-header {
+#editor-preview h6.ce-header {
     color: darkblue;
     border-bottom: 1px solid darkblue;
     padding: 1em 0 0 0;

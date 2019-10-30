@@ -15,6 +15,9 @@
         "title": "Gravar",
         "success": "Registo gravado com sucesso"
     },
+    "preview": {
+        "title": "Previsualizar"
+    },
     "dashboard": {
         "title": "",
         "message": ""

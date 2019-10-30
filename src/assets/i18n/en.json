@@ -15,6 +15,9 @@
         "title": "Save",
         "success": "Record successfully saved"
     },
+    "preview": {
+        "title": "Preview"
+    },
     "dashboard": {
         "title": "",
         "message": ""

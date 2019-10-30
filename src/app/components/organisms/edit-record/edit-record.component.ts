@@ -37,6 +37,8 @@ export class EditRecordComponent extends BaseComponent {
 
   success: boolean = false;
 
+  preview: boolean = false;
+
   toasts: any[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private recordService: RecordService, public toastService: ToastService) {
@@ -92,7 +94,7 @@ export class EditRecordComponent extends BaseComponent {
   /**
    * save data
    */
-  save(): void {
+  saveRecord(): void {
     this.submitted = true;
     this.success = false;
     setTimeout(() => {
@@ -116,6 +118,21 @@ export class EditRecordComponent extends BaseComponent {
         console.error('Saving failed: ', error);
       });
     }, this.timeout);
+  }
+
+  previewRecord(): void {
+    this.preview = true;
+    if(!this.isEmptyObject(this.record)){
+      this.editor = new EditorJS({
+        holder: 'editor-preview',
+        tools: {
+          header: Header,
+          marker: Marker,
+          delimiter: Delimiter
+        },
+        data: this.record
+      });
+    }
   }
 
   /**
