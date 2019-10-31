@@ -21,9 +21,7 @@ export class OverflowYDirective {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    console.log('window.innerHeight', window.innerHeight);
     this.elHeight = window.innerHeight - this.offset - this.maxOffset;
-    console.log('window.innerHeight 1', window.innerHeight - this.offset - this.maxOffset);
   }
 
 }

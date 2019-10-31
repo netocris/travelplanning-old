@@ -16,17 +16,15 @@
             <thead>
               <tr>
                 <th width="15%" class="text-custom">{{ 'record.list.table.header.date' | translate }}</th>
-                <th width="15%" class="text-custom">{{ 'record.list.table.header.type' | translate }}</th>
-                <th width="20%" class="text-custom">{{ 'record.list.table.header.header' | translate }}</th>
-                <th width="30%" class="text-custom">{{ 'record.list.table.header.text' | translate }}</th>
-                <th width="10%" class="text-custom text-center">{{ 'record.list.table.header.actions' | translate }}</th>
+                <th width="20%" class="text-custom">{{ 'record.list.table.header.type' | translate }}</th>
+                <th width="50%" class="text-custom">{{ 'record.list.table.header.header' | translate }}</th>
+                <th width="15%" class="text-custom text-center">{{ 'record.list.table.header.actions' | translate }}</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let record of records | slice: (page - 1) * pageSize : (page - 1) * pageSize + pageSize;">
                 <td class="text-custom">{{record.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                 <td class="text-custom">{{record.blocks[0].type}}</td>
-                <td class="text-custom">{{record.blocks[0].data.text}}</td>
                 <td class="text-custom">{{record.blocks[0].data.text}}</td>
                 <td class="text-center">
                   <button class="btn btn-outline-primary" (click)="preview(record.id)" ngbTooltip="{{ 'record.list.table.tooltip.preview' | translate }}">

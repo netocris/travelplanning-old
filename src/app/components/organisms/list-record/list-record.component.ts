@@ -59,7 +59,7 @@ export class ListRecordComponent extends BaseComponent {
    * @param id record id
    */
   preivew(id: string){
-    
+
   }
 
   /**
