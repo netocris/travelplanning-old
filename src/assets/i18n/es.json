@@ -1,0 +1,64 @@
+{
+	"add": "Anadir",
+	"contact": {
+		"contactus": "Contáctanos",
+		"email": "suportetravelplanning@gmail.com"
+	},
+	"dashboard": {
+		"message": "",
+		"title": ""
+	},
+	"language": {
+		"en": {
+			"code": "en",
+			"label": "Inglés"
+		},
+		"es": {
+			"code": "es",
+			"label": "español"
+		},
+		"fr": {
+			"code": "fr",
+			"label": "francés"
+		},
+		"pt": {
+			"code": "pt",
+			"label": "portugués"
+		}
+	},
+	"list": "Consultar",
+	"norecordsfound": "No se encontraron registros",
+	"preview": {
+		"title": "Vista previa"
+	},
+	"record": {
+		"list": {
+			"table": {
+				"header": {
+					"actions": "Operaciones",
+					"date": "Fecha",
+					"header": "Título",
+					"text": "Texto",
+					"type": "especie"
+				},
+				"tooltip": {
+					"preview": "",
+					"edit": "Editar registro",
+					"delete": "Eliminar entrada"
+				}
+			}
+		}
+	},
+	"save": {
+		"success": "Grabar con éxito grabado",
+		"title": "Grabar"
+	},
+	"settings": {
+		"title": "Ajustes"
+	},
+	"sign": {
+		"in": "Entrar",
+		"out": "Salir"
+	},
+	"title": "Travel Planning"
+}

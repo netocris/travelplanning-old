@@ -1,47 +1,64 @@
 {
-    "title": "Travel Planning",
-    "add": "Add",
-    "list": "List",
-    "norecordsfound": "No records found",
-    "sign": {
-        "in": "Sign in",
-        "out": "Sign out"
-    },
-    "contact": {
-        "contactus": "Contact us",
-        "email": "suportetravelplanning"
-    },
-    "save": {
-        "title": "Save",
-        "success": "Record successfully saved"
-    },
-    "preview": {
-        "title": "Preview"
-    },
-    "dashboard": {
-        "title": "",
-        "message": ""
-    },
-    "record": {
-        "edit": {
-        },
-        "list": {
-            "table": {
-                "header": {
-                    "date": "Date",
-                    "type": "Type",
-                    "header": "Title",
-                    "text": "Text",
-                    "actions": "Actions"
-                },
-                "tooltip": {
-                    "edit": "Edit record",
-                    "delete": "Delete record"
-                }
-            }
-        }
-    },
-    "settings": {
-        "title": "Settings"
-    }
+	"add": "Add",
+	"contact": {
+		"contactus": "Contact us",
+		"email": "suportetravelplanning@gmail.com"
+	},
+	"dashboard": {
+		"message": "",
+		"title": ""
+	},
+	"language": {
+		"en": {
+			"code": "en",
+			"label": "English"
+		},
+		"es": {
+			"code": "es",
+			"label": "Spanish"
+		},
+		"fr": {
+			"code": "fr",
+			"label": "French"
+		},
+		"pt": {
+			"code": "pt",
+			"label": "Portuguese"
+		}
+	},
+	"list": "List",
+	"norecordsfound": "No records found",
+	"preview": {
+		"title": "Preview"
+	},
+	"record": {
+		"list": {
+			"table": {
+				"header": {
+					"actions": "Actions",
+					"date": "Date",
+					"header": "Title",
+					"text": "Text",
+					"type": "Type"
+				},
+				"tooltip": {
+					"preview": "Preview record",
+					"edit": "Edit record",
+					"delete": "Delete record"
+				}
+			}
+		}
+	},
+	"save": {
+		"success": "Record successfully saved",
+		"title": "Save"
+	},
+	"settings": {
+		"title": "Settings"
+	},
+	"sign": {
+		"in": "Sign in",
+		"out": "Sign out"
+	},
+	"title": "Travel Planning"
 }

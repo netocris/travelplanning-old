@@ -3,6 +3,8 @@ import { IRecord } from '../../../models/i-record';
 import { BaseComponent } from '../../base.component';
 import { DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../../../services/language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -11,18 +13,33 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SettingsComponent extends BaseComponent {
 
-  year: number = 1800;
+  private languageSubscription: Subscription = null;
 
-  langList = [ {'code': 'pt', 'label': 'Portuguese'}, {'code': 'en', 'label': 'English'}];
+  year: number = 1800;
+  langs = [];
 
   constructor(@Inject(DOCUMENT) private document: Document,
     @Inject(LOCALE_ID) protected lang: string,
-    private translate: TranslateService) {
+    private translateService: TranslateService,
+    private languageService: LanguageService) {
     super();
   }
 
   protected ngOnInitCustom(): void {
     this.year = new Date().getFullYear();
+    if (this.isEmptyObject(this.languageSubscription)) {
+      this.languageSubscription = this.languageService.langsObservable.subscribe((data: any[]) => {
+        if (data) {
+          this.langs = data;
+        }
+      });
+    }
+  }
+
+  protected ngOnDestroyCustom(): void {
+    if (!this.isEmptyObject(this.languageSubscription)) {
+      this.languageSubscription.unsubscribe();
+    }
   }
 
   onChange(value: any): void {
@@ -36,7 +53,7 @@ export class SettingsComponent extends BaseComponent {
   }
 
   useLanguage(language: string): void {
-    this.translate.use(language);
+    this.translateService.use(language);
   }
 
   private trans(): void {

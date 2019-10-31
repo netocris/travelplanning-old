@@ -9,7 +9,7 @@
         <div class="col-sm-12 col-md-2 text-left">
                 <select class="custom-select d-block w-100" id="country" required>
                     <option value="">Choose...</option>
-                    <option *ngFor="let lang of langList" (click)="useLanguage(lang.code)">{{ lang.label }}</option>
+                    <option *ngFor="let lang of langs" (change)="useLanguage(lang.code)">{{ lang.label }}</option>
                 </select>
 
             <!--<a class="p-1 font-size-sm text-custom" href="#" *ngFor="let lang of langList" (click)="useLanguage(lang.code)">

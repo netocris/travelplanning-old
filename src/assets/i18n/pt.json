@@ -1,47 +1,64 @@
 {
-    "title": "Travel Planning",
-    "add": "Adicionar",
-    "list": "Consultar",
-    "norecordsfound": "Nenhum registo encontrado",
-    "sign": {
-        "in": "Entrar",
-        "out": "Sair"
-    },
-    "contact": {
-        "contactus": "Contacte-nos",
-        "email": "suportetravelplanning@gmail.com"
-    },
-    "save": {
-        "title": "Gravar",
-        "success": "Registo gravado com sucesso"
-    },
-    "preview": {
-        "title": "Previsualizar"
-    },
-    "dashboard": {
-        "title": "",
-        "message": ""
-    },
-    "record": {
-        "edit": {
-        },
-        "list": {
-            "table": {
-                "header": {
-                    "date": "Data",
-                    "type": "Tipo",
-                    "header": "Titulo",
-                    "text": "Texto",
-                    "actions": "Operações"
-                },
-                "tooltip": {
-                    "edit": "Editar registo",
-                    "delete": "Apagar registo"
-                }
-            }
-        }
-    },
-    "settings": {
-        "title": "Configurações"
-    }
+	"add": "Adicionar",
+	"contact": {
+		"contactus": "Contacte-nos",
+		"email": "suportetravelplanning@gmail.com"
+	},
+	"dashboard": {
+		"message": "",
+		"title": ""
+	},
+	"language": {
+		"en": {
+			"code": "en",
+			"label": "Inglês"
+		},
+		"es": {
+			"code": "es",
+			"label": "Espanhol"
+		},
+		"fr": {
+			"code": "fr",
+			"label": "Francês"
+		},
+		"pt": {
+			"code": "pt",
+			"label": "Português"
+		}
+	},
+	"list": "Consultar",
+	"norecordsfound": "Nenhum registo encontrado",
+	"preview": {
+		"title": "Previsualizar"
+	},
+	"record": {
+		"list": {
+			"table": {
+				"header": {
+					"actions": "Operações",
+					"date": "Data",
+					"header": "Titulo",
+					"text": "Texto",
+					"type": "Tipo"
+				},
+				"tooltip": {
+					"preview": "Previsualizar registo",
+					"edit": "Editar registo",
+					"delete": "Apagar registo"
+				}
+			}
+		}
+	},
+	"save": {
+		"success": "Registo gravado com sucesso",
+		"title": "Gravar"
+	},
+	"settings": {
+		"title": "Configurações"
+	},
+	"sign": {
+		"in": "Entrar",
+		"out": "Sair"
+	},
+	"title": "Travel Planning"
 }
