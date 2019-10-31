@@ -2,7 +2,7 @@
 
 <ng-template #recordsTemplate>
   <div class="row">
-    <div class="col-sm-12 col-md-12 px-md-2 scrollbar">
+    <div class="col-sm-12 col-md-12">
       <div class="border border-light" *ngIf="records.length === 0; else showRecords">
         <span>{{ 'norecordsfound' | translate }}</span>
       </div>
@@ -11,7 +11,7 @@
           (pageOutputEventEmitter)="pageEventEmitter($event)">
         </app-pagination>
         <app-filter [records]="records"></app-filter>
-        <div class="table-responsive border border-light scroll-enable">
+        <div class="table-responsive border border-light scrollbar" overflow-y [maxOffset]="55">
           <table class="table table-striped table-hover">
             <thead>
               <tr>

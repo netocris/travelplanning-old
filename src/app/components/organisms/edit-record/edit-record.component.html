@@ -7,36 +7,27 @@
     </app-toasts>
 
     <div class="row">
-        <div class="col-sm-12 col-md-6 mb-3 px-0 scrollbar">
-            <div class="scroll-enable" overflow-y>
-                <div id="editor"></div>
-            </div>
+        <div class="col-sm-12 col-md-6 mb-3 scrollbar" overflow-y>
+            <div id="editor"></div>
+        </div>
+        <div class="col-sm-12 col-md-6 mb-3 scrollbar" overflow-y>
+            <div id="editor-preview"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
             <button class="btn btn-outline-primary" [disabled]="submitted" (click)="saveRecord()">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
                 {{ 'save.title' | translate }}
             </button>
-            <button class="btn btn-outline-secondary ml-2" (click)="previewRecord()">
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <button class="btn btn-outline-secondary" (click)="previewRecord()">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
                 {{ 'preview.title' | translate }}
             </button>
-        </div>
-        <div class="col-sm-12 col-md-6 mb-3 px-0 scrollbar">
-            <div class="scroll-enable">
-                <div id="editor-preview"></div>
-            </div>
         </div>
     </div>
-    <!--<div class="row">
-        <div class="col-sm-12 col-md-6 px-0">-->
-            <!--<button class="btn btn-outline-primary" [disabled]="submitted" (click)="saveRecord()">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
-                {{ 'save.title' | translate }}
-            </button>
-            <button class="btn btn-outline-secondary ml-2" (click)="previewRecord()">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
-                {{ 'preview.title' | translate }}
-            </button>-->
-            <!--<span *ngIf="success" class="text-muted ml-2"><small>{{'edit.record.successfully' | translate}}</small></span>-->
-        <!--</div>
-    </div>-->
+
 </ng-template>

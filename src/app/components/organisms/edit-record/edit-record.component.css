@@ -3,11 +3,12 @@
   height: 770px;
 }
 
-.scrollbar {
-  float: left;
+/*.scrollbar {
+  overflow-x: hidden;
   overflow-y: auto;
-}
+}*/
 
+/*
 .scrollbar::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -30,7 +31,7 @@
   border-right-width: .0625em;
   border-bottom-width: .0625em;
   border-left-width: .0625em;
-}
+}*/
 
 /*
 
@@ -43,13 +44,13 @@ vertical scroll
   overflow-y: auto;
 }
 
- width 
+ width
 .tab-content::-webkit-scrollbar {
   border-radius: 4px;
   width: 8px;
 }
 
- the empty space “below” the progress bar 
+ the empty space “below” the progress bar
 .tab-content::-webkit-scrollbar-track {
   border-radius: 4px;
   background: #e2e2e2;
@@ -60,7 +61,7 @@ vertical scroll
   background: #eaeaea;
 }
 
- the draggable scrolling element 
+ the draggable scrolling element
 .tab-content::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background: #e2e2e2;

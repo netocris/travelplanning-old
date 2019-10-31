@@ -5,76 +5,25 @@ import {Directive, HostBinding, HostListener, Input} from '@angular/core';
 })
 export class OverflowYDirective {
 
-  //@Input()
-  //isResume: boolean = false;
+  @Input()
+  maxOffset: number = 0;
 
   @HostBinding('style.height.px')
   elHeight: number;
 
-  //private maxOffset: number = 308;
-
-  private minOffset: number = 205;
-
-  private resumeOffset: number = 0;
-
-  //private entityDataRendered: boolean = false;
-
-  //private subscription = null;
+  private offset: number = 160;
 
   constructor() { }
 
   ngOnInit() {
-
-    /*if(this.isResume){
-      this.resumeOffset = 50;
-    }
-
-    // if company is in context
-    if(!this.isEmptyValue(this.companySummary.companySummary.idPpalIci)){
-      this.entityDataRendered = true;
-    }
-
-    // if company context changed
-    if(this.isEmptyObject(this.subscription)){
-      this.subscription = this.companySummary.companySummaryChanged.subscribe(() => {
-        this.entityDataRendered = true;
-        this.onWindowResize();
-      });
-    }*/
-
     this.onWindowResize();
-
-  }
-
-  ngOnDestroy() {
-    //if(this.isEmptyObject(this.subscription)){
-    //  this.subscription.unsubscribe();
-    //}
   }
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    let innerHeight = window.innerHeight;
-    this.elHeight = innerHeight - this.minOffset - this.resumeOffset;
-    /*if(this.entityDataRendered){
-      this.elHeight = innerHeight - this.maxOffset - this.resumeOffset;
-    } else {
-      this.elHeight = innerHeight - this.minOffset - this.resumeOffset;
-    }*/
+    console.log('window.innerHeight', window.innerHeight);
+    this.elHeight = window.innerHeight - this.offset - this.maxOffset;
+    console.log('window.innerHeight 1', window.innerHeight - this.offset - this.maxOffset);
   }
-
-  /*private isEmptyObject(value: any) {
-    if (value === undefined || value === null) {
-      return true;
-    }
-    return false;
-  }
-
-  private isEmptyValue(value: string) {
-    if (value === undefined || value === null || value.split(' ').join('') === '') {
-      return true;
-    }
-    return false;
-  }*/
 
 }
