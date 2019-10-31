@@ -37,7 +37,6 @@
 				"header": {
 					"actions": "Actions",
 					"date": "Date",
-					"header": "Title",
 					"text": "Text",
 					"type": "Type"
 				},
