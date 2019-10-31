@@ -17,6 +17,7 @@
               <tr>
                 <th width="22%" class="text-custom">{{ 'record.list.table.header.date' | translate }}</th>
                 <th width="30%" class="text-custom">{{ 'record.list.table.header.type' | translate }}</th>
+                <th width="40%" class="text-custom">{{ 'record.list.table.header.header' | translate }}</th>
                 <th width="40%" class="text-custom">{{ 'record.list.table.header.text' | translate }}</th>
                 <th width="8%" class="text-custom text-center">{{ 'record.list.table.header.actions' | translate }}</th>
               </tr>
@@ -26,9 +27,13 @@
                 <td class="text-custom">{{record.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                 <td class="text-custom">{{record.blocks[0].type}}</td>
                 <td class="text-custom">{{record.blocks[0].data.text}}</td>
+                <td class="text-custom">{{record.blocks[0].data.text}}</td>
                 <td class="text-center">
+                  <button class="btn btn-outline-primary" (click)="preview(record.id)" ngbTooltip="{{ 'record.list.table.tooltip.edit' | translate }}">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </button>
                   <button class="btn btn-outline-primary" (click)="edit(record.id)" ngbTooltip="{{ 'record.list.table.tooltip.edit' | translate }}">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
                   <button class="btn btn-outline-danger" (click)="delete(record.id)" ngbTooltip="{{ 'record.list.table.tooltip.delete' | translate }}">
                     <i class="fa fa-eraser" aria-hidden="true"></i>

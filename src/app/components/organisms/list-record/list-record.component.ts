@@ -53,6 +53,15 @@ export class ListRecordComponent extends BaseComponent {
     }
   }
 
+/**
+   * preview record
+   *
+   * @param id record id
+   */
+  preivew(id: string){
+    
+  }
+
   /**
    * edit record
    *

@@ -30,6 +30,7 @@
                 "header": {
                     "date": "Data",
                     "type": "Tipo",
+                    "header": "Titulo",
                     "text": "Texto",
                     "actions": "Operações"
                 },

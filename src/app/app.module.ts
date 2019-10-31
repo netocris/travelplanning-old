@@ -23,7 +23,9 @@ import { TranslateHttpLoader  } from '@ngx-translate/http-loader';
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http);
 }
+
 /* directives */
+import { OverflowYDirective } from './directives/overflow-y/overflow-y.directive';
 
 /* services */
 import { AuthService } from './services/auth.service';
@@ -57,7 +59,8 @@ import { SettingsComponent } from './components/organisms/settings/settings.comp
     PaginationComponent,
     FilterComponent,
     ToastsComponent,
-    SettingsComponent
+    SettingsComponent,
+    OverflowYDirective
   ],
   imports: [
     BrowserModule,

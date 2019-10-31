@@ -1,6 +1,6 @@
 .scroll-enable {
   /*height: calc(100vh - 165px);*/
-  height: 570px;
+  height: 770px;
 }
 
 .scrollbar {
@@ -31,3 +31,44 @@
   border-bottom-width: .0625em;
   border-left-width: .0625em;
 }
+
+/*
+
+a directiva é aplicada à div com classe tab-content
+<div class="tab-content" overflow-y>
+
+vertical scroll
+.tab-content {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+ width 
+.tab-content::-webkit-scrollbar {
+  border-radius: 4px;
+  width: 8px;
+}
+
+ the empty space “below” the progress bar 
+.tab-content::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: #e2e2e2;
+}
+
+.tab-content::-webkit-scrollbar-track:hover {
+  border-radius: 4px;
+  background: #eaeaea;
+}
+
+ the draggable scrolling element 
+.tab-content::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #e2e2e2;
+}
+
+.tab-content::-webkit-scrollbar-thumb:hover {
+  border-radius: 4px;
+  background: #9a9a9a;
+}
+
+*/
