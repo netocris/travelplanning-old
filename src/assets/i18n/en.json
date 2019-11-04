@@ -1,5 +1,6 @@
 {
 	"add": "Add",
+	"choose": "choose ...",
 	"contact": {
 		"contactus": "Contact us",
 		"email": "suportetravelplanning@gmail.com"
@@ -7,24 +8,6 @@
 	"dashboard": {
 		"message": "",
 		"title": ""
-	},
-	"language": {
-		"en": {
-			"code": "en",
-			"label": "English"
-		},
-		"es": {
-			"code": "es",
-			"label": "Spanish"
-		},
-		"fr": {
-			"code": "fr",
-			"label": "French"
-		},
-		"pt": {
-			"code": "pt",
-			"label": "Portuguese"
-		}
 	},
 	"list": "List",
 	"norecordsfound": "No records found",

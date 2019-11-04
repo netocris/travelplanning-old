@@ -1,5 +1,6 @@
 {
 	"add": "Adicionar",
+	"choose": "escolher ...",
 	"contact": {
 		"contactus": "Contacte-nos",
 		"email": "suportetravelplanning@gmail.com"
@@ -7,24 +8,6 @@
 	"dashboard": {
 		"message": "",
 		"title": ""
-	},
-	"language": {
-		"en": {
-			"code": "en",
-			"label": "Inglês"
-		},
-		"es": {
-			"code": "es",
-			"label": "Espanhol"
-		},
-		"fr": {
-			"code": "fr",
-			"label": "Francês"
-		},
-		"pt": {
-			"code": "pt",
-			"label": "Português"
-		}
 	},
 	"list": "Consultar",
 	"norecordsfound": "Nenhum registo encontrado",

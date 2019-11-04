@@ -1,10 +1,12 @@
-import { Component, Input, Output, EventEmitter, Inject, LOCALE_ID } from '@angular/core';
-import { IRecord } from '../../../models/i-record';
+import { UserSettings } from './../../../models/user-settings';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { BaseComponent } from '../../base.component';
 import { DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../../../services/language.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
+import { SettingsService } from '../../../services/settings.service';
+import { IUserSettings } from '../../../models/i-user-settings';
 
 @Component({
   selector: 'app-settings',
@@ -16,24 +18,31 @@ export class SettingsComponent extends BaseComponent {
   private languageSubscription: Subscription = null;
 
   year: number = 1800;
-  langs = [];
+  settings: IUserSettings = null;
+  langs = [{ "code": "en", "label": "EN" }, { "code": "pt", "label": "PT" }];
 
   constructor(@Inject(DOCUMENT) private document: Document,
     @Inject(LOCALE_ID) protected lang: string,
     private translateService: TranslateService,
-    private languageService: LanguageService) {
+    private authService: AuthService,
+    private settingsService: SettingsService) {
     super();
   }
 
   protected ngOnInitCustom(): void {
     this.year = new Date().getFullYear();
-    if (this.isEmptyObject(this.languageSubscription)) {
-      this.languageSubscription = this.languageService.langsObservable.subscribe((data: any[]) => {
-        if (data) {
-          this.langs = data;
-        }
-      });
-    }
+    this.settings = new UserSettings();
+    this.authService.user.subscribe(user => {
+      if (user) {
+        this.settings.uid = user.uid;
+        this.settings.darkMode = false;
+        this.settingsService.getSettings(user.uid).subscribe((data => {
+          if (data) {
+            this.settings = data;
+          }
+        }));
+      }
+    });
   }
 
   protected ngOnDestroyCustom(): void {
@@ -53,7 +62,9 @@ export class SettingsComponent extends BaseComponent {
   }
 
   useLanguage(language: string): void {
+    this.settingsService.save({uid: this.settings.uid, lang: language, darkMode: this.settings.darkMode });
     this.translateService.use(language);
+
   }
 
   private trans(): void {
