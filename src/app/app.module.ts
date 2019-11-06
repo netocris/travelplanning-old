@@ -33,6 +33,7 @@ import { RecordService } from './services/record.service';
 import { ConfigService } from './services/config.service';
 import { ToastService } from './services/toast.service';
 import { SettingsService } from './services/settings.service';
+import { LanguageService } from './services/language.service';
 
 /* components */
 import { AppRoutingModule } from './app-routing.module';
@@ -88,6 +89,7 @@ import { SettingsComponent } from './components/organisms/settings/settings.comp
     ConfigService,
     ToastService,
     SettingsService,
+    LanguageService,
     {
       provide: LOCALE_ID, useValue: 'pt'
     },

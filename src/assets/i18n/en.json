@@ -1,6 +1,27 @@
 {
+	"title": "Travel Planning",
 	"add": "Add",
+	"list": "List",
 	"choose": "choose ...",
+	"norecordsfound": "No records found",
+	"language": {
+		"en": {
+			"code": "en",
+			"label": "English"
+		},
+		"pt": {
+			"code": "pt",
+			"label": "Portuguese"
+		},
+		"fr": {
+			"code": "fr",
+			"label": "French"
+		},
+		"es": {
+			"code": "es",
+			"label": "Spanish"
+		}
+	},
 	"contact": {
 		"contactus": "Contact us",
 		"email": "suportetravelplanning@gmail.com"
@@ -9,8 +30,6 @@
 		"message": "",
 		"title": ""
 	},
-	"list": "List",
-	"norecordsfound": "No records found",
 	"preview": {
 		"title": "Preview"
 	},
@@ -41,6 +60,5 @@
 	"sign": {
 		"in": "Sign in",
 		"out": "Sign out"
-	},
-	"title": "Travel Planning"
+	}
 }

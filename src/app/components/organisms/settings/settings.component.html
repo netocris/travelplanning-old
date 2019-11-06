@@ -7,9 +7,9 @@
     <div class="row mb-3">
         <div class="col-sm-12 col-md-2 text-capitalize">Linguagem</div>
         <div class="col-sm-12 col-md-2 text-left">
-            <select class="custom-select d-block w-100" #langSelect (change)="useLanguage(langSelect.value)">
+            <select class="custom-select d-block w-100" (change)="onChangeLanguage($event)">
                 <option value="">{{ 'choose' | translate }}</option>
-                <option *ngFor="let lang of langs" [value]="lang.code" [selected]="settings.lang === lang.code">{{ lang.label }}</option>
+                <option *ngFor="let language of languages" [value]="language.code" [selected]="settings.language === language.code">{{ language.label }}</option>
             </select>
             <!--<a class="p-1 font-size-sm text-custom" href="#" *ngFor="let lang of langList" (click)="useLanguage(lang.code)">
                 {{ lang.label }}
@@ -20,7 +20,7 @@
     <div class="row mb-3">
         <div class="col-sm-12 col-md-2 text-capitalize">activar/desactivar dark mode</div>
         <div class="col-sm-12 col-md-2 text-left">
-            <input type="checkbox" id="switch" name="theme" (change)="onChange($event)" [value]="settings.darkMode" /> <label for="switch">Toggle</label>
+            <input type="checkbox" id="switch" name="theme" (change)="onChangeDarkMode($event)" [value]="settings.darkMode" /> <label for="switch">Toggle</label>
         </div>
     </div>
 

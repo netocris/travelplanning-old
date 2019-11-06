@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
 import { SettingsService } from '../../../services/settings.service';
 import { IUserSettings } from '../../../models/i-user-settings';
+import { LanguageService } from '../../../services/language.service';
+import { ILanguage } from '../../../models/i-language';
 
 @Component({
   selector: 'app-settings',
@@ -19,13 +21,14 @@ export class SettingsComponent extends BaseComponent {
 
   year: number = 1800;
   settings: IUserSettings = null;
-  langs = [{ "code": "en", "label": "EN" }, { "code": "pt", "label": "PT" }];
+  languages = [];
 
   constructor(@Inject(DOCUMENT) private document: Document,
     @Inject(LOCALE_ID) protected lang: string,
     private translateService: TranslateService,
     private authService: AuthService,
-    private settingsService: SettingsService) {
+    private settingsService: SettingsService,
+    private languageService: LanguageService) {
     super();
   }
 
@@ -34,15 +37,23 @@ export class SettingsComponent extends BaseComponent {
     this.settings = new UserSettings();
     this.authService.user.subscribe(user => {
       if (user) {
-        this.settings.uid = user.uid;
+        this.settings.id = user.uid;
         this.settings.darkMode = false;
-        this.settingsService.getSettings(user.uid).subscribe((data => {
+        this.settingsService.getSettings(user.uid).subscribe(data => {
           if (data) {
             this.settings = data;
           }
-        }));
+        });
       }
     });
+    if (this.isEmptyObject(this.languageSubscription)) {
+      this.languageSubscription = this.languageService.languagesObservable.subscribe((data: ILanguage[]) => {
+        debugger;
+        if (data) {
+          this.languages = data;
+        }
+      });
+    }
   }
 
   protected ngOnDestroyCustom(): void {
@@ -51,7 +62,7 @@ export class SettingsComponent extends BaseComponent {
     }
   }
 
-  onChange(value: any): void {
+  onChangeDarkMode(value: any): void {
     if(value.target.checked){
       this.trans();
       this.document.documentElement.setAttribute('data-theme', 'dark');
@@ -59,10 +70,12 @@ export class SettingsComponent extends BaseComponent {
       this.trans();
       this.document.documentElement.setAttribute('data-theme', 'light');
     }
+    this.settingsService.save(this.settings.id, this.settings.language, value.target.checked);
   }
 
-  useLanguage(language: string): void {
-    this.settingsService.save({uid: this.settings.uid, lang: language, darkMode: this.settings.darkMode });
+  onChangeLanguage(value: any): void {
+    const language = value.target.value;
+    this.settingsService.save(this.settings.id, language, this.settings.darkMode);
     this.translateService.use(language);
 
   }

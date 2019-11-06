@@ -27,15 +27,17 @@ export class SettingsService extends BaseService {
   /**
    * save settings
    *
-   * @param data data
+   * @param id id
+   * @param lang lang
+   * @param darkMode darkMode
    */
-  save(data: IUserSettings): void {
-    const toSave = {
-      uid: data.uid,
-      lang: data.lang,
-      darkMode: data.darkMode
+  save(id: string, language: string, darkMode: boolean): void {
+    const data = {
+      id: id,
+      language: language,
+      darkMode: darkMode
     };
-    this.entityCol.doc(data.uid).set(toSave, {merge: true});
+    this.entityCol.doc<IUserSettings>(id).set(data, {merge: true});
   }
 
 }

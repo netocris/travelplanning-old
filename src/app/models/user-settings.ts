@@ -1,7 +1,7 @@
 import { IUserSettings } from './i-user-settings';
 
 export class UserSettings implements IUserSettings {
-    uid: string;
-    lang: string;
+    id: string;
+    language: string;
     darkMode: boolean;
 }

@@ -1,5 +1,5 @@
 export interface IUserSettings {
-    uid: string;
-    lang: string;
+    id: string;
+    language: string;
     darkMode: boolean;
 }
