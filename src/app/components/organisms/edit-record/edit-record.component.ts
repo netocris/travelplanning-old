@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
+import Marker from '@editorjs/marker';
+import Delimiter from '@editorjs/delimiter';
 
 import { BaseComponent } from '../../base.component';
 import { RecordService } from './../../../services/record.service';
@@ -34,6 +36,8 @@ export class EditRecordComponent extends BaseComponent {
   submitted: boolean = false;
 
   success: boolean = false;
+
+  preview: boolean = false;
 
   toasts: any[] = [];
 
@@ -90,7 +94,7 @@ export class EditRecordComponent extends BaseComponent {
   /**
    * save data
    */
-  save(): void {
+  saveRecord(): void {
     this.submitted = true;
     this.success = false;
     setTimeout(() => {
@@ -114,6 +118,21 @@ export class EditRecordComponent extends BaseComponent {
         console.error('Saving failed: ', error);
       });
     }, this.timeout);
+  }
+
+  previewRecord(): void {
+    this.preview = true;
+    if(!this.isEmptyObject(this.record)){
+      this.editor = new EditorJS({
+        holder: 'editor-preview',
+        tools: {
+          header: Header,
+          marker: Marker,
+          delimiter: Delimiter
+        },
+        data: this.record
+      });
+    }
   }
 
   /**
@@ -157,6 +176,7 @@ export class EditRecordComponent extends BaseComponent {
             const block: IBlock = new Block();
             block.type = blockItem.type;
             const blockContent: IBlockContent = new BlockContent();
+            blockContent.level = blockItem.data.level;
             blockContent.text = blockItem.data.text;
             block.data = blockContent;
             record.blocks.push(block);
@@ -181,7 +201,9 @@ export class EditRecordComponent extends BaseComponent {
         this.editor = new EditorJS({
           holder: 'editor',
           tools: {
-            header: Header
+            header: Header,
+            marker: Marker,
+            delimiter: Delimiter
           },
           data: this.record
         });
@@ -189,7 +211,9 @@ export class EditRecordComponent extends BaseComponent {
         this.editor = new EditorJS({
           holder: 'editor',
           tools: {
-            header: Header
+            header: Header,
+            marker: Marker,
+            delimiter: Delimiter
           }
         });
       }

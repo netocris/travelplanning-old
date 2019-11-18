@@ -1,43 +1,64 @@
 {
-    "title": "Travel Planning",
-    "add": "Add",
-    "list": "List",
-    "norecordsfound": "No records found",
-    "sign": {
-        "in": "Sign in",
-        "out": "Sign out"
-    },
-    "contact": {
-        "contactus": "contact us",
-        "email": "suportetravelplanning"
-    },
-    "save": {
-        "title": "Save",
-        "success": "Record successfully saved"
-    },
-    "dashboard": {
-        "title": "",
-        "message": ""
-    },
-    "record": {
-        "edit": {
-        },
-        "list": {
-            "table": {
-                "header": {
-                    "date": "Date",
-                    "type": "Type",
-                    "text": "Text",
-                    "actions": "Actions"
-                },
-                "tooltip": {
-                    "edit": "Edit record",
-                    "delete": "Delete record"
-                }
-            }
-        }
-    },
-    "settings": {
-        "title": "Settings"
-    }
+	"title": "Travel Planning",
+	"add": "Add",
+	"list": "List",
+	"choose": "choose ...",
+	"norecordsfound": "No records found",
+	"language": {
+		"en": {
+			"code": "en",
+			"label": "English"
+		},
+		"pt": {
+			"code": "pt",
+			"label": "Portuguese"
+		},
+		"fr": {
+			"code": "fr",
+			"label": "French"
+		},
+		"es": {
+			"code": "es",
+			"label": "Spanish"
+		}
+	},
+	"contact": {
+		"contactus": "Contact us",
+		"email": "suportetravelplanning@gmail.com"
+	},
+	"dashboard": {
+		"message": "",
+		"title": ""
+	},
+	"preview": {
+		"title": "Preview"
+	},
+	"record": {
+		"list": {
+			"table": {
+				"header": {
+					"actions": "Actions",
+					"date": "Date",
+					"text": "Text",
+					"type": "Type"
+				},
+				"tooltip": {
+					"preview": "Preview record",
+					"edit": "Edit record",
+					"delete": "Delete record"
+				}
+			}
+		}
+	},
+	"save": {
+		"success": "Record successfully saved",
+		"title": "Save"
+	},
+	"settings": {
+		"title": "Settings"
+	},
+	"sign": {
+		"in": "Sign in",
+		"out": "Sign out"
+	}
 }

@@ -23,13 +23,17 @@ import { TranslateHttpLoader  } from '@ngx-translate/http-loader';
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http);
 }
+
 /* directives */
+import { OverflowYDirective } from './directives/overflow-y/overflow-y.directive';
 
 /* services */
 import { AuthService } from './services/auth.service';
 import { RecordService } from './services/record.service';
 import { ConfigService } from './services/config.service';
 import { ToastService } from './services/toast.service';
+import { SettingsService } from './services/settings.service';
+import { LanguageService } from './services/language.service';
 
 /* components */
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +61,8 @@ import { SettingsComponent } from './components/organisms/settings/settings.comp
     PaginationComponent,
     FilterComponent,
     ToastsComponent,
-    SettingsComponent
+    SettingsComponent,
+    OverflowYDirective
   ],
   imports: [
     BrowserModule,
@@ -83,6 +88,8 @@ import { SettingsComponent } from './components/organisms/settings/settings.comp
     RecordService,
     ConfigService,
     ToastService,
+    SettingsService,
+    LanguageService,
     {
       provide: LOCALE_ID, useValue: 'pt'
     },

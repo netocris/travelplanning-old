@@ -14,15 +14,15 @@ export class AuthService extends BaseService {
 
   user: Observable<IUser>;
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
     super();
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         // Logged in
-        if (user) {          
-          return this.afs.doc<IUser>(`users/${user.uid}`).valueChanges();          
+        if (user) {
+          return this.afs.doc<IUser>(`users/${user.uid}`).valueChanges();
         } else {
-          // Logged out          
+          // Logged out
           return of(null);
         }
       })
@@ -42,7 +42,7 @@ export class AuthService extends BaseService {
 
   private updateUser(user: import('firebase').User) {
     // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<IUser> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<IUser> = this.afs.doc<IUser>(`users/${user.uid}`);
 
     const data = {
       uid: user.uid,
