@@ -7,9 +7,9 @@ import { BaseService } from './base.service';
 })
 export class ToastService extends BaseService {
 
-  toastSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private toastSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private toasts: any[] = [];
   toastObservable: Observable<any[]> = this.toastSubject.asObservable();
-  toasts: any[] = [];
 
   add(textOrTpl: string | TemplateRef<any>, options: any = {}) {
     this.toasts.push({ textOrTpl, ...options });

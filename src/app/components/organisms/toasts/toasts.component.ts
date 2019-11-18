@@ -15,7 +15,7 @@ export class ToastsComponent extends BaseComponent {
   @Output()
   hideOutputEventEmitter = new EventEmitter();
 
-  delay: number = 1000;
+  delay: number = 1500;
 
   constructor(public toastService: ToastService) {
     super();

@@ -2,7 +2,7 @@
 
 <ng-template #recordsTemplate>
   <div class="row">
-    <div class="col-sm-12 col-md-12 px-md-2 scrollbar">
+    <div class="col-sm-12 col-md-12">
       <div class="border border-light" *ngIf="records.length === 0; else showRecords">
         <span>{{ 'norecordsfound' | translate }}</span>
       </div>
@@ -11,14 +11,14 @@
           (pageOutputEventEmitter)="pageEventEmitter($event)">
         </app-pagination>
         <app-filter [records]="records"></app-filter>
-        <div class="table-responsive border border-light scroll-enable">
+        <div class="table-responsive border border-light scrollbar" overflow-y [maxOffset]="55">
           <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th width="20%" class="text-custom">{{ 'record.list.table.header.date' | translate }}</th>
-                <th width="30%" class="text-custom">{{ 'record.list.table.header.type' | translate }}</th>
-                <th width="40%" class="text-custom">{{ 'record.list.table.header.text' | translate }}</th>
-                <th width="10%" class="text-custom text-center">{{ 'record.list.table.header.actions' | translate }}</th>
+                <th width="15%" class="text-custom">{{ 'record.list.table.header.date' | translate }}</th>
+                <th width="20%" class="text-custom">{{ 'record.list.table.header.type' | translate }}</th>
+                <th width="50%" class="text-custom">{{ 'record.list.table.header.text' | translate }}</th>
+                <th width="15%" class="text-custom text-center">{{ 'record.list.table.header.actions' | translate }}</th>
               </tr>
             </thead>
             <tbody>
@@ -27,8 +27,11 @@
                 <td class="text-custom">{{record.blocks[0].type}}</td>
                 <td class="text-custom">{{record.blocks[0].data.text}}</td>
                 <td class="text-center">
+                  <button class="btn btn-outline-primary" (click)="preview(record.id)" ngbTooltip="{{ 'record.list.table.tooltip.preview' | translate }}">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </button>
                   <button class="btn btn-outline-primary" (click)="edit(record.id)" ngbTooltip="{{ 'record.list.table.tooltip.edit' | translate }}">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
                   <button class="btn btn-outline-danger" (click)="delete(record.id)" ngbTooltip="{{ 'record.list.table.tooltip.delete' | translate }}">
                     <i class="fa fa-eraser" aria-hidden="true"></i>

@@ -1,8 +1,14 @@
-import { Component, Input, Output, EventEmitter, Inject, LOCALE_ID } from '@angular/core';
-import { IRecord } from '../../../models/i-record';
+import { UserSettings } from './../../../models/user-settings';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { BaseComponent } from '../../base.component';
 import { DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
+import { SettingsService } from '../../../services/settings.service';
+import { IUserSettings } from '../../../models/i-user-settings';
+import { LanguageService } from '../../../services/language.service';
+import { ILanguage } from '../../../models/i-language';
 
 @Component({
   selector: 'app-settings',
@@ -11,21 +17,52 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SettingsComponent extends BaseComponent {
 
-  year: number = 1800;
+  private languageSubscription: Subscription = null;
 
-  langList = [ {'code': 'pt', 'label': 'PT'}, {'code': 'en', 'label': 'EN'}];
+  year: number = 1800;
+  settings: IUserSettings = null;
+  languages = [];
 
   constructor(@Inject(DOCUMENT) private document: Document,
     @Inject(LOCALE_ID) protected lang: string,
-    private translate: TranslateService) {
+    private translateService: TranslateService,
+    private authService: AuthService,
+    private settingsService: SettingsService,
+    private languageService: LanguageService) {
     super();
   }
 
   protected ngOnInitCustom(): void {
     this.year = new Date().getFullYear();
+    this.settings = new UserSettings();
+    this.authService.user.subscribe(user => {
+      if (user) {
+        this.settings.id = user.uid;
+        this.settings.darkMode = false;
+        this.settingsService.getSettings(user.uid).subscribe(data => {
+          if (data) {
+            this.settings = data;
+          }
+        });
+      }
+    });
+    if (this.isEmptyObject(this.languageSubscription)) {
+      this.languageSubscription = this.languageService.languagesObservable.subscribe((data: ILanguage[]) => {
+        debugger;
+        if (data) {
+          this.languages = data;
+        }
+      });
+    }
   }
 
-  onChange(value: any): void {
+  protected ngOnDestroyCustom(): void {
+    if (!this.isEmptyObject(this.languageSubscription)) {
+      this.languageSubscription.unsubscribe();
+    }
+  }
+
+  onChangeDarkMode(value: any): void {
     if(value.target.checked){
       this.trans();
       this.document.documentElement.setAttribute('data-theme', 'dark');
@@ -33,10 +70,14 @@ export class SettingsComponent extends BaseComponent {
       this.trans();
       this.document.documentElement.setAttribute('data-theme', 'light');
     }
+    this.settingsService.save(this.settings.id, this.settings.language, value.target.checked);
   }
 
-  useLanguage(language: string): void {
-    this.translate.use(language);
+  onChangeLanguage(value: any): void {
+    const language = value.target.value;
+    this.settingsService.save(this.settings.id, language, this.settings.darkMode);
+    this.translateService.use(language);
+
   }
 
   private trans(): void {
