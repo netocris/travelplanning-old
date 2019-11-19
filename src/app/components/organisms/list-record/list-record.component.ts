@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 import { BaseComponent } from '../../base.component';
 import { ConfigService } from '../../../services/config.service';
 import { RecordService } from '../../../services/record.service';
@@ -28,7 +30,9 @@ export class ListRecordComponent extends BaseComponent {
 
   pageSize: number = 10;
 
-  constructor(private router: Router, private configService: ConfigService, private recordService: RecordService) {
+  closeResult: string;
+
+  constructor(private router: Router, private configService: ConfigService, private recordService: RecordService, private modalService: NgbModal) {
     super();
   }
 
@@ -58,8 +62,8 @@ export class ListRecordComponent extends BaseComponent {
    *
    * @param id record id
    */
-  preivew(id: string){
-
+  preview(id: string){
+    this.open("modalContent");
   }
 
   /**
@@ -90,6 +94,10 @@ export class ListRecordComponent extends BaseComponent {
    */
   pageEventEmitter(value: number): void {
     this.page = value;
+  }
+
+  open(content) {
+    this.modalService.open(content, { scrollable: true });
   }
 
   /**

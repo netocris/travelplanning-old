@@ -14,7 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 /* ng-bootstrap */
-import { NgbPaginationModule, NgbTooltipModule, NgbToastModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbPaginationModule, NgbTooltipModule, NgbToastModule, NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 
 /* ngx-translate */
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -75,6 +75,7 @@ import { SettingsComponent } from './components/organisms/settings/settings.comp
     NgbPaginationModule,
     NgbTooltipModule,
     NgbToastModule,
+    NgbModalModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
