@@ -93,6 +93,20 @@ h1, h4, h5 {
     margin-bottom: 0;
 }
 
+/* editor js custom css */
+#modal-preview h2.ce-header {
+    color: darkblue;
+    /*padding: 0 0 1em 0;*/
+    /*line-height: 1.2em;*/
+}
+
+#modal-preview h6.ce-header {
+    color: darkblue;
+    border-bottom: 1px solid darkblue;
+    padding: 1em 0 0 0;
+    margin-bottom: 0;
+}
+
 .ce-delimiter:before {
     font-size: 30px;
 }
@@ -137,4 +151,8 @@ h1, h4, h5 {
     .modal-dialog {
         max-width: 700px;
     }
+  }
+
+  .modal-dialog-scrollable .modal-body {
+    overflow-y: hidden !important;
   }
