@@ -4,6 +4,11 @@ import { Subscription } from 'rxjs';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header';
+import Marker from '@editorjs/marker';
+import Delimiter from '@editorjs/delimiter';
+
 import { BaseComponent } from '../../base.component';
 import { ConfigService } from '../../../services/config.service';
 import { RecordService } from '../../../services/record.service';
@@ -24,6 +29,8 @@ export class ListRecordComponent extends BaseComponent {
 
   private subscription: Subscription = null;
 
+  private previewRecordSubscription: Subscription = null;
+
   records: IRecord[] = [];
 
   page: number = 1;
@@ -31,6 +38,10 @@ export class ListRecordComponent extends BaseComponent {
   pageSize: number = 10;
 
   closeResult: string;
+
+  editor: EditorJS;
+
+  previewRecordStillLoading: boolean = false;
 
   constructor(private router: Router, private configService: ConfigService, private recordService: RecordService, private modalService: NgbModal) {
     super();
@@ -55,6 +66,9 @@ export class ListRecordComponent extends BaseComponent {
     if (!this.isEmptyObject(this.subscription)) {
       this.subscription.unsubscribe();
     }
+    if (!this.isEmptyObject(this.previewRecordSubscription)) {
+      this.previewRecordSubscription.unsubscribe();
+    }
   }
 
 /**
@@ -62,8 +76,20 @@ export class ListRecordComponent extends BaseComponent {
    *
    * @param id record id
    */
-  preview(id: string){
-    this.open("modalContent");
+  preview(content, id: string){
+
+    if(!this.isEmptyObject(id)){
+      this.previewRecordStillLoading = true;
+      this.previewRecordSubscription = this.recordService.getRecordByIdSnap(id).subscribe((data: any) => {
+        if (data) {
+          const previewRecord: IRecord = this.processSingleData(data);
+          this.initializeEditor('modal-preview', previewRecord);
+          this.previewRecordStillLoading = false;
+          this.modalService.open(content, { scrollable: true });
+        }
+      });
+    }
+
   }
 
   /**
@@ -142,6 +168,66 @@ export class ListRecordComponent extends BaseComponent {
 
     }
 
+  }
+
+  /**
+   * process data from service
+   *
+   * @param data data
+   */
+  private processSingleData(data: any): IRecord {
+
+    const record: IRecord = new Record();
+
+    if(!this.isEmptyObject(data)){
+      const doc = data.payload;
+      if(!this.isEmptyObject(doc)){
+
+        // store record id
+        record.id = doc.id;
+
+        // process data object
+        const docData = doc.data();
+        if(!this.isEmptyObject(docData)){
+          record.time = docData.time;
+          record.blocks = [];
+          docData.blocks.filter(blockItem => {
+            const block: IBlock = new Block();
+            block.type = blockItem.type;
+            const blockContent: IBlockContent = new BlockContent();
+            blockContent.level = blockItem.data.level;
+            blockContent.text = blockItem.data.text;
+            block.data = blockContent;
+            record.blocks.push(block);
+          });
+        }
+
+      }
+    }
+
+    return record;
+
+  }
+
+/**
+   * initialize editor instance
+   *
+   * @param holder
+   * @param record
+   */
+  private initializeEditor(holder: string, record: IRecord): void {
+    this.timeout = 0;
+    setTimeout(() => {
+      this.editor = new EditorJS({
+        holder: holder,
+        tools: {
+          header: Header,
+          marker: Marker,
+          delimiter: Delimiter
+        },
+        data: record
+      });
+    }, this.timeout);
   }
 
   /**
